@@ -35,18 +35,31 @@ namespace WoWFishBot
             UpdateStatusBar("Settings saved");
         }
 
-        private void btnCapture_Click(object sender, EventArgs e)
-        {
-            Config.CaptureAll();
-            
-        }
+       
 
-        // Public Form Access
+        // Public Form Accessors
         public TextBox TopLeft { get { return Inp_TopLeft; } }
         public TextBox BottomRight { get { return Inp_BottomRight; } }
         public TextBox LureSkill { get { return Inp_LureSkill; } }
         public TextBox FishSkill { get { return Inp_FishSkill; } }
         public TextBox BobberColor { get { return Inp_BobberColor; } }
+        public void ClearAllCaptureInputs()
+        {
+            Inp_TopLeft.Text = string.Empty;
+            Inp_BottomRight.Text = string.Empty;
+            Inp_LureSkill.Text = string.Empty;
+            Inp_FishSkill.Text = string.Empty;
+            Inp_BobberColor.Text = string.Empty;
+            Logger.Log("Cleared all capture inputs");
+        }
+
+        // Capture Buttons
+        private void Btn_CaptureAll_Click(object sender, EventArgs e) =>Config.CaptureAll();
+        private void Btn_CaptureTopLeft_Click(object sender, EventArgs e) => Config.CaptureTopLeft(3000);
+        private void Btn_CaptureBottomRight_Click(object sender, EventArgs e) => Config.CaptureBottomRight(3000);
+        private void Btn_CaptureLureSkill_Click(object sender, EventArgs e) => Config.CaptureLureSkill(3000);
+        private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill(3000);
+        private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor(3000);
 
     }
 }

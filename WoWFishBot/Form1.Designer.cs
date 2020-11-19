@@ -38,7 +38,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnCapture = new System.Windows.Forms.Button();
+            this.btnCaptureAll = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -49,6 +49,11 @@
             this.Inp_BottomRight = new System.Windows.Forms.TextBox();
             this.Inp_LureSkill = new System.Windows.Forms.TextBox();
             this.Inp_FishSkill = new System.Windows.Forms.TextBox();
+            this.Btn_CaptureTopLeft = new System.Windows.Forms.Button();
+            this.Btn_CaptureBottomRight = new System.Windows.Forms.Button();
+            this.Btn_CaptureLureSkill = new System.Windows.Forms.Button();
+            this.Btn_CaptureFishSkill = new System.Windows.Forms.Button();
+            this.Btn_CaptureBobberColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
@@ -158,15 +163,15 @@
             this.StatusLabel.Size = new System.Drawing.Size(39, 17);
             this.StatusLabel.Text = "Status";
             // 
-            // btnCapture
+            // btnCaptureAll
             // 
-            this.btnCapture.Location = new System.Drawing.Point(12, 154);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(234, 23);
-            this.btnCapture.TabIndex = 9;
-            this.btnCapture.Text = "Capture Config";
-            this.btnCapture.UseVisualStyleBackColor = true;
-            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
+            this.btnCaptureAll.Location = new System.Drawing.Point(12, 154);
+            this.btnCaptureAll.Name = "btnCaptureAll";
+            this.btnCaptureAll.Size = new System.Drawing.Size(234, 23);
+            this.btnCaptureAll.TabIndex = 9;
+            this.btnCaptureAll.Text = "Capture All";
+            this.btnCaptureAll.UseVisualStyleBackColor = true;
+            this.btnCaptureAll.Click += new System.EventHandler(this.Btn_CaptureAll_Click);
             // 
             // label4
             // 
@@ -215,44 +220,99 @@
             // 
             // Inp_BobberColor
             // 
-            this.Inp_BobberColor.Location = new System.Drawing.Point(144, 286);
+            this.Inp_BobberColor.Location = new System.Drawing.Point(109, 286);
             this.Inp_BobberColor.Name = "Inp_BobberColor";
             this.Inp_BobberColor.Size = new System.Drawing.Size(102, 20);
             this.Inp_BobberColor.TabIndex = 27;
             // 
             // Inp_TopLeft
             // 
-            this.Inp_TopLeft.Location = new System.Drawing.Point(144, 182);
+            this.Inp_TopLeft.Location = new System.Drawing.Point(109, 182);
             this.Inp_TopLeft.Name = "Inp_TopLeft";
             this.Inp_TopLeft.Size = new System.Drawing.Size(102, 20);
             this.Inp_TopLeft.TabIndex = 28;
             // 
             // Inp_BottomRight
             // 
-            this.Inp_BottomRight.Location = new System.Drawing.Point(144, 208);
+            this.Inp_BottomRight.Location = new System.Drawing.Point(109, 208);
             this.Inp_BottomRight.Name = "Inp_BottomRight";
             this.Inp_BottomRight.Size = new System.Drawing.Size(102, 20);
             this.Inp_BottomRight.TabIndex = 29;
             // 
             // Inp_LureSkill
             // 
-            this.Inp_LureSkill.Location = new System.Drawing.Point(144, 234);
+            this.Inp_LureSkill.Location = new System.Drawing.Point(109, 234);
             this.Inp_LureSkill.Name = "Inp_LureSkill";
             this.Inp_LureSkill.Size = new System.Drawing.Size(102, 20);
             this.Inp_LureSkill.TabIndex = 30;
             // 
             // Inp_FishSkill
             // 
-            this.Inp_FishSkill.Location = new System.Drawing.Point(144, 260);
+            this.Inp_FishSkill.Location = new System.Drawing.Point(109, 260);
             this.Inp_FishSkill.Name = "Inp_FishSkill";
             this.Inp_FishSkill.Size = new System.Drawing.Size(102, 20);
             this.Inp_FishSkill.TabIndex = 31;
+            // 
+            // Btn_CaptureTopLeft
+            // 
+            this.Btn_CaptureTopLeft.Location = new System.Drawing.Point(217, 182);
+            this.Btn_CaptureTopLeft.Name = "Btn_CaptureTopLeft";
+            this.Btn_CaptureTopLeft.Size = new System.Drawing.Size(29, 23);
+            this.Btn_CaptureTopLeft.TabIndex = 32;
+            this.Btn_CaptureTopLeft.Text = ">";
+            this.Btn_CaptureTopLeft.UseVisualStyleBackColor = true;
+            this.Btn_CaptureTopLeft.Click += new System.EventHandler(this.Btn_CaptureTopLeft_Click);
+            // 
+            // Btn_CaptureBottomRight
+            // 
+            this.Btn_CaptureBottomRight.Location = new System.Drawing.Point(217, 206);
+            this.Btn_CaptureBottomRight.Name = "Btn_CaptureBottomRight";
+            this.Btn_CaptureBottomRight.Size = new System.Drawing.Size(29, 23);
+            this.Btn_CaptureBottomRight.TabIndex = 33;
+            this.Btn_CaptureBottomRight.Text = ">";
+            this.Btn_CaptureBottomRight.UseVisualStyleBackColor = true;
+            this.Btn_CaptureBottomRight.Click += new System.EventHandler(this.Btn_CaptureBottomRight_Click);
+            // 
+            // Btn_CaptureLureSkill
+            // 
+            this.Btn_CaptureLureSkill.Location = new System.Drawing.Point(217, 232);
+            this.Btn_CaptureLureSkill.Name = "Btn_CaptureLureSkill";
+            this.Btn_CaptureLureSkill.Size = new System.Drawing.Size(29, 23);
+            this.Btn_CaptureLureSkill.TabIndex = 34;
+            this.Btn_CaptureLureSkill.Text = ">";
+            this.Btn_CaptureLureSkill.UseVisualStyleBackColor = true;
+            this.Btn_CaptureLureSkill.Click += new System.EventHandler(this.Btn_CaptureLureSkill_Click);
+            // 
+            // Btn_CaptureFishSkill
+            // 
+            this.Btn_CaptureFishSkill.Location = new System.Drawing.Point(217, 258);
+            this.Btn_CaptureFishSkill.Name = "Btn_CaptureFishSkill";
+            this.Btn_CaptureFishSkill.Size = new System.Drawing.Size(29, 23);
+            this.Btn_CaptureFishSkill.TabIndex = 35;
+            this.Btn_CaptureFishSkill.Text = ">";
+            this.Btn_CaptureFishSkill.UseVisualStyleBackColor = true;
+            this.Btn_CaptureFishSkill.Click += new System.EventHandler(this.Btn_CaptureFishSkill_Click);
+            // 
+            // Btn_CaptureBobberColor
+            // 
+            this.Btn_CaptureBobberColor.Location = new System.Drawing.Point(217, 284);
+            this.Btn_CaptureBobberColor.Name = "Btn_CaptureBobberColor";
+            this.Btn_CaptureBobberColor.Size = new System.Drawing.Size(29, 23);
+            this.Btn_CaptureBobberColor.TabIndex = 36;
+            this.Btn_CaptureBobberColor.Text = ">";
+            this.Btn_CaptureBobberColor.UseVisualStyleBackColor = true;
+            this.Btn_CaptureBobberColor.Click += new System.EventHandler(this.Btn_CaptureBobberColor_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 625);
+            this.Controls.Add(this.Btn_CaptureBobberColor);
+            this.Controls.Add(this.Btn_CaptureFishSkill);
+            this.Controls.Add(this.Btn_CaptureLureSkill);
+            this.Controls.Add(this.Btn_CaptureBottomRight);
+            this.Controls.Add(this.Btn_CaptureTopLeft);
             this.Controls.Add(this.Inp_FishSkill);
             this.Controls.Add(this.Inp_LureSkill);
             this.Controls.Add(this.Inp_BottomRight);
@@ -263,7 +323,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnCapture);
+            this.Controls.Add(this.btnCaptureAll);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cb_UseLure);
@@ -297,7 +357,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
-        private System.Windows.Forms.Button btnCapture;
+        private System.Windows.Forms.Button btnCaptureAll;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
@@ -308,6 +368,11 @@
         private System.Windows.Forms.TextBox Inp_BottomRight;
         private System.Windows.Forms.TextBox Inp_LureSkill;
         private System.Windows.Forms.TextBox Inp_FishSkill;
+        private System.Windows.Forms.Button Btn_CaptureTopLeft;
+        private System.Windows.Forms.Button Btn_CaptureBottomRight;
+        private System.Windows.Forms.Button Btn_CaptureLureSkill;
+        private System.Windows.Forms.Button Btn_CaptureFishSkill;
+        private System.Windows.Forms.Button Btn_CaptureBobberColor;
     }
 }
 
