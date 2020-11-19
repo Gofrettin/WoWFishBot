@@ -54,6 +54,7 @@
             this.Btn_CaptureLureSkill = new System.Windows.Forms.Button();
             this.Btn_CaptureFishSkill = new System.Windows.Forms.Button();
             this.Btn_CaptureBobberColor = new System.Windows.Forms.Button();
+            this.tb_Log = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
@@ -308,11 +309,20 @@
             this.Btn_CaptureBobberColor.UseVisualStyleBackColor = true;
             this.Btn_CaptureBobberColor.Click += new System.EventHandler(this.Btn_CaptureBobberColor_Click);
             // 
+            // tb_Log
+            // 
+            this.tb_Log.Location = new System.Drawing.Point(252, 11);
+            this.tb_Log.Name = "tb_Log";
+            this.tb_Log.Size = new System.Drawing.Size(368, 296);
+            this.tb_Log.TabIndex = 37;
+            this.tb_Log.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 625);
+            this.Controls.Add(this.tb_Log);
             this.Controls.Add(this.Btn_CaptureBobberColor);
             this.Controls.Add(this.Btn_CaptureFishSkill);
             this.Controls.Add(this.Btn_CaptureLureSkill);
@@ -378,6 +388,7 @@
         private System.Windows.Forms.Button Btn_CaptureLureSkill;
         private System.Windows.Forms.Button Btn_CaptureFishSkill;
         private System.Windows.Forms.Button Btn_CaptureBobberColor;
+        private System.Windows.Forms.RichTextBox tb_Log;
     }
 }
 

@@ -23,6 +23,14 @@ namespace WoWFishBot
             StatusLabel.Text = status;
             StatusStrip.Update();
         }
+        public void UpdateLog(string message)
+        {
+            tb_Log.AppendText(message + Environment.NewLine);
+
+            // auto scroll
+            tb_Log.SelectionStart = tb_Log.Text.Length;
+            tb_Log.ScrollToCaret();
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
