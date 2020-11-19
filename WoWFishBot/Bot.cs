@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -21,7 +22,43 @@ namespace WoWFishBot
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         public static extern int BitBlt(IntPtr hDC, int x, int y, int nWidth, int nHeight, IntPtr hSrcDC, int xSrc, int ySrc, int dwRop);
 
+
+        private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
         public static void Sleep(int time) => Task.Delay(time).Wait();
+
+        /// <summary>
+        /// Gets mouse location as a Point
+        /// </summary>
+        /// <returns></returns>
         public static Point GetMouseLocation() => new Point(Cursor.Position.X, Cursor.Position.Y);
+
+        /// <summary>
+        /// Gets color at specified location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public static Color GetColorAtLocation(Point location)
+        {
+            using (Graphics gdest = Graphics.FromImage(screenCapture))
+            {
+                using (Graphics gsrc = Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    IntPtr hSrcDC = gsrc.GetHdc();
+                    IntPtr hDC = gdest.GetHdc();
+                    int retval = BitBlt(hDC, 0, 0, 1, 1, hSrcDC, location.X, location.Y, (int)CopyPixelOperation.SourceCopy);
+                    gdest.ReleaseHdc();
+                    gsrc.ReleaseHdc();
+                }
+            }
+
+            return screenCapture.GetPixel(0, 0);
+        }
+
+        /// <summary>
+        /// Gets color at cursor location
+        /// </summary>
+        /// <returns></returns>
+        public static Color GetColorAtLocation() => GetColorAtLocation(GetMouseLocation());
+      
     }
 }

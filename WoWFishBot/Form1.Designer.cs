@@ -140,7 +140,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(69, 373);
+            this.btnSave.Location = new System.Drawing.Point(485, 132);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 7;
@@ -311,11 +311,12 @@
             // 
             // tb_Log
             // 
-            this.tb_Log.Location = new System.Drawing.Point(252, 11);
+            this.tb_Log.Location = new System.Drawing.Point(12, 322);
             this.tb_Log.Name = "tb_Log";
-            this.tb_Log.Size = new System.Drawing.Size(368, 296);
+            this.tb_Log.Size = new System.Drawing.Size(528, 208);
             this.tb_Log.TabIndex = 37;
             this.tb_Log.Text = "";
+            this.tb_Log.WordWrap = false;
             // 
             // MainForm
             // 

@@ -27,7 +27,6 @@ namespace WoWFishBot
         private static Random randomNumber = new Random();
         private static float saturationFactor_MAYBE = 1;
         private static float brightnessFactor_MAYBE = 1;
-        private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
         private static Size searchRectangleSize;
         private static List<Color> foundColorList = new List<Color>();
         private static List<Point> locationList = new List<Point>();
@@ -62,8 +61,9 @@ namespace WoWFishBot
             Console.Beep();
 
             // COLOR => TODO
-            //Bot.Sleep(1000);
-            //topLeftCords = Bot.GetMouseLocation();
+            Bot.Sleep(1000);
+            CaptureBobberColor();
+            Console.Beep();
 
             Logger.Log("All captures complete");
         }
@@ -99,11 +99,12 @@ namespace WoWFishBot
         public static void CaptureBobberColor(int captureDelay = 0)
         {
             Bot.Sleep(captureDelay);
-            // TODO
-            Program.mainForm.BobberColor.Text = "TODO";
-            Logger.Log($"Bobber color captured: TODO");
+            searchColor = Bot.GetColorAtLocation();
+            Program.mainForm.BobberColor.Text = $"{searchColor.R}, {searchColor.G}, {searchColor.B}";
+            Logger.Log($"Bobber color captured: {searchColor}");
         }
 
+        // TODO: Validate config
     }
 
 }
