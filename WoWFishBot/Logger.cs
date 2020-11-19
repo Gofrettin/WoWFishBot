@@ -8,9 +8,11 @@ namespace WoWFishBot
 {
     static public class Logger
     {
-        static public void Log(string message)
+        static public void Log(string message, bool showInStatusBar = true)
         {
             Console.WriteLine(message);
+            if (showInStatusBar) Program.mainForm.UpdateStatusBar(message);
         }
+
     }
 }

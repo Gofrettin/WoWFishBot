@@ -139,7 +139,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(144, 312);
+            this.btnSave.Location = new System.Drawing.Point(69, 373);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 7;
@@ -220,6 +220,7 @@
             // 
             // Inp_BobberColor
             // 
+            this.Inp_BobberColor.Enabled = false;
             this.Inp_BobberColor.Location = new System.Drawing.Point(109, 286);
             this.Inp_BobberColor.Name = "Inp_BobberColor";
             this.Inp_BobberColor.Size = new System.Drawing.Size(102, 20);
@@ -227,6 +228,7 @@
             // 
             // Inp_TopLeft
             // 
+            this.Inp_TopLeft.Enabled = false;
             this.Inp_TopLeft.Location = new System.Drawing.Point(109, 182);
             this.Inp_TopLeft.Name = "Inp_TopLeft";
             this.Inp_TopLeft.Size = new System.Drawing.Size(102, 20);
@@ -234,6 +236,7 @@
             // 
             // Inp_BottomRight
             // 
+            this.Inp_BottomRight.Enabled = false;
             this.Inp_BottomRight.Location = new System.Drawing.Point(109, 208);
             this.Inp_BottomRight.Name = "Inp_BottomRight";
             this.Inp_BottomRight.Size = new System.Drawing.Size(102, 20);
@@ -241,6 +244,7 @@
             // 
             // Inp_LureSkill
             // 
+            this.Inp_LureSkill.Enabled = false;
             this.Inp_LureSkill.Location = new System.Drawing.Point(109, 234);
             this.Inp_LureSkill.Name = "Inp_LureSkill";
             this.Inp_LureSkill.Size = new System.Drawing.Size(102, 20);
@@ -248,6 +252,7 @@
             // 
             // Inp_FishSkill
             // 
+            this.Inp_FishSkill.Enabled = false;
             this.Inp_FishSkill.Location = new System.Drawing.Point(109, 260);
             this.Inp_FishSkill.Name = "Inp_FishSkill";
             this.Inp_FishSkill.Size = new System.Drawing.Size(102, 20);

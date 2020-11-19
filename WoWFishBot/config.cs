@@ -61,9 +61,11 @@ namespace WoWFishBot
             CaptureFishSkill();
             Console.Beep();
 
-            // COLOR
+            // COLOR => TODO
             //Bot.Sleep(1000);
             //topLeftCords = Bot.GetMouseLocation();
+
+            Logger.Log("All captures complete");
         }
 
         public static void CaptureTopLeft(int captureDelay = 0)

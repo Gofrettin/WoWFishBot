@@ -19,7 +19,7 @@ namespace WoWFishBot
 
         public void UpdateStatusBar(string status)
         {
-            Logger.Log($"Updating status bar to '{status}'");
+            Logger.Log($"Updating status bar to '{status}'", false);
             StatusLabel.Text = status;
             StatusStrip.Update();
         }
@@ -35,9 +35,8 @@ namespace WoWFishBot
             UpdateStatusBar("Settings saved");
         }
 
-       
-
         // Public Form Accessors
+        public ToolStripStatusLabel StatusBarLabel { get { return StatusLabel; } }
         public TextBox TopLeft { get { return Inp_TopLeft; } }
         public TextBox BottomRight { get { return Inp_BottomRight; } }
         public TextBox LureSkill { get { return Inp_LureSkill; } }
