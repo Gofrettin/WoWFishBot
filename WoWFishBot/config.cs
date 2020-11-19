@@ -39,6 +39,7 @@ namespace WoWFishBot
         public static void CaptureAll()
         {
             Logger.Log("Capturing settings");
+            Program.mainForm.ClearAllCaptureInputs();
 
             // TOP LEFT
             Bot.Sleep(1000);
@@ -64,29 +65,41 @@ namespace WoWFishBot
             //Bot.Sleep(1000);
             //topLeftCords = Bot.GetMouseLocation();
         }
-        public static void CaptureTopLeft()
+
+        public static void CaptureTopLeft(int captureDelay = 0)
         {
+            Bot.Sleep(captureDelay);
             topLeftCords = Bot.GetMouseLocation();
             Program.mainForm.TopLeft.Text = topLeftCords.ToString();
             Logger.Log($"Top left captured: {topLeftCords}");
         }
-        public static void CaptureBottomRight()
+        public static void CaptureBottomRight(int captureDelay = 0)
         {
+            Bot.Sleep(captureDelay);
             bottomRightCords = Bot.GetMouseLocation();
             Program.mainForm.BottomRight.Text = bottomRightCords.ToString();
             Logger.Log($"Bottom right captured: {bottomRightCords}");
         }
-        public static void CaptureLureSkill()
+        public static void CaptureLureSkill(int captureDelay = 0)
         {
+            Bot.Sleep(captureDelay);
             lureLocation = Bot.GetMouseLocation();
-            Program.mainForm.Lure.Text = lureLocation.ToString();
+            Program.mainForm.LureSkill.Text = lureLocation.ToString();
             Logger.Log($"Lure skill captured: {lureLocation}");
         }
-        public static void CaptureFishSkill()
+        public static void CaptureFishSkill(int captureDelay = 0)
         {
+            Bot.Sleep(captureDelay);
             skillLocation = Bot.GetMouseLocation();
             Program.mainForm.FishSkill.Text = skillLocation.ToString();
             Logger.Log($"Fish skill captured: {skillLocation}");
+        }
+        public static void CaptureBobberColor(int captureDelay = 0)
+        {
+            Bot.Sleep(captureDelay);
+            // TODO
+            Program.mainForm.BobberColor.Text = "TODO";
+            Logger.Log($"Bobber color captured: TODO");
         }
 
     }
