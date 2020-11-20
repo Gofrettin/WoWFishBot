@@ -31,6 +31,11 @@ namespace WoWFishBot
             tb_Log.SelectionStart = tb_Log.Text.Length;
             tb_Log.ScrollToCaret();
         }
+        public void UpdatePictureBox(Bitmap picture)
+        {
+            Logger.Log("Updating picture box");
+            PictureBox.Image = picture;
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -45,6 +50,7 @@ namespace WoWFishBot
 
         // Public Form Accessors
         public ToolStripStatusLabel StatusBarLabel { get { return StatusLabel; } }
+
         public TextBox TopLeft { get { return Inp_TopLeft; } }
         public TextBox BottomRight { get { return Inp_BottomRight; } }
         public TextBox LureSkill { get { return Inp_LureSkill; } }
@@ -67,6 +73,6 @@ namespace WoWFishBot
         private void Btn_CaptureLureSkill_Click(object sender, EventArgs e) => Config.CaptureLureSkill(3000);
         private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill(3000);
         private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor(3000);
-
+        private void Btn_UpdateScreenshot_Click(object sender, EventArgs e) => Bot.CaptureScreen();
     }
 }

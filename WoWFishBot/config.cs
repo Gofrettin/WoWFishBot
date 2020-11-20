@@ -22,19 +22,12 @@ namespace WoWFishBot
         public static Point lureLocation { get; set; }
         public static Point skillLocation { get; set; }
         public static Color searchColor { get; set; }
-
-        // GLOBALS
-        private static Random randomNumber = new Random();
-        private static float saturationFactor_MAYBE = 1;
-        private static float brightnessFactor_MAYBE = 1;
         private static Size searchRectangleSize;
-        private static List<Color> foundColorList = new List<Color>();
-        private static List<Point> locationList = new List<Point>();
 
-        //Lure
-        private static System.Timers.Timer lureTimer;
-        private static bool lureBuffExpired = false;
 
+        /// <summary>
+        /// Captures all settings
+        /// </summary>
         public static void CaptureAll()
         {
             Logger.Log("Capturing settings");
@@ -43,27 +36,27 @@ namespace WoWFishBot
             // TOP LEFT
             Bot.Sleep(1000);
             CaptureTopLeft();
-            Console.Beep();
+            //Console.Beep();
 
             // BOTTOM RIGHT
             Bot.Sleep(1000);
             CaptureBottomRight();
-            Console.Beep();
+            //Console.Beep();
 
             // LURE
             Bot.Sleep(1000);
             CaptureLureSkill();
-            Console.Beep();
+            //Console.Beep();
 
             // SKILL
             Bot.Sleep(1000);
             CaptureFishSkill();
-            Console.Beep();
+            //Console.Beep();
 
             // COLOR => TODO
             Bot.Sleep(1000);
             CaptureBobberColor();
-            Console.Beep();
+            //Console.Beep();
 
             Logger.Log("All captures complete");
         }
@@ -104,7 +97,11 @@ namespace WoWFishBot
             Logger.Log($"Bobber color captured: {searchColor}");
         }
 
-        // TODO: Validate config
+        public static void ValidateConfig()
+        {
+            // create rectangle => current a Bot. function
+            //searchRectangleSize = new Size(bottomRightCords.X - topLeftCords.X, bottomRightCords.Y - topLeftCords.Y);
+        }
     }
 
 }

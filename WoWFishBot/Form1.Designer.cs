@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Inp_DelayMultiplier = new System.Windows.Forms.NumericUpDown();
             this.cb_UseLure = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnCaptureAll = new System.Windows.Forms.Button();
@@ -55,10 +54,15 @@
             this.Btn_CaptureFishSkill = new System.Windows.Forms.Button();
             this.Btn_CaptureBobberColor = new System.Windows.Forms.Button();
             this.tb_Log = new System.Windows.Forms.RichTextBox();
+            this.PB_CurrentVolume = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.PictureBox = new System.Windows.Forms.PictureBox();
+            this.Btn_UpdateScreenshot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
             this.StatusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Inp_TriggerVol
@@ -137,16 +141,6 @@
             this.cb_UseLure.TabIndex = 6;
             this.cb_UseLure.Text = "Use Lure";
             this.cb_UseLure.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(485, 132);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // StatusStrip
             // 
@@ -311,18 +305,57 @@
             // 
             // tb_Log
             // 
-            this.tb_Log.Location = new System.Drawing.Point(12, 322);
+            this.tb_Log.Location = new System.Drawing.Point(15, 324);
             this.tb_Log.Name = "tb_Log";
             this.tb_Log.Size = new System.Drawing.Size(528, 208);
             this.tb_Log.TabIndex = 37;
             this.tb_Log.Text = "";
             this.tb_Log.WordWrap = false;
             // 
+            // PB_CurrentVolume
+            // 
+            this.PB_CurrentVolume.Location = new System.Drawing.Point(400, 30);
+            this.PB_CurrentVolume.Name = "PB_CurrentVolume";
+            this.PB_CurrentVolume.Size = new System.Drawing.Size(160, 23);
+            this.PB_CurrentVolume.TabIndex = 38;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(397, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Current Volume";
+            // 
+            // PictureBox
+            // 
+            this.PictureBox.Location = new System.Drawing.Point(252, 66);
+            this.PictureBox.Name = "PictureBox";
+            this.PictureBox.Size = new System.Drawing.Size(507, 241);
+            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox.TabIndex = 40;
+            this.PictureBox.TabStop = false;
+            // 
+            // Btn_UpdateScreenshot
+            // 
+            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(730, 284);
+            this.Btn_UpdateScreenshot.Name = "Btn_UpdateScreenshot";
+            this.Btn_UpdateScreenshot.Size = new System.Drawing.Size(29, 23);
+            this.Btn_UpdateScreenshot.TabIndex = 41;
+            this.Btn_UpdateScreenshot.Text = ">";
+            this.Btn_UpdateScreenshot.UseVisualStyleBackColor = true;
+            this.Btn_UpdateScreenshot.Click += new System.EventHandler(this.Btn_UpdateScreenshot_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 625);
+            this.Controls.Add(this.Btn_UpdateScreenshot);
+            this.Controls.Add(this.PictureBox);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.PB_CurrentVolume);
             this.Controls.Add(this.tb_Log);
             this.Controls.Add(this.Btn_CaptureBobberColor);
             this.Controls.Add(this.Btn_CaptureFishSkill);
@@ -341,7 +374,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCaptureAll);
             this.Controls.Add(this.StatusStrip);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cb_UseLure);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Inp_DelayMultiplier);
@@ -356,6 +388,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).EndInit();
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,7 +403,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown Inp_DelayMultiplier;
         private System.Windows.Forms.CheckBox cb_UseLure;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.Button btnCaptureAll;
@@ -390,6 +422,10 @@
         private System.Windows.Forms.Button Btn_CaptureFishSkill;
         private System.Windows.Forms.Button Btn_CaptureBobberColor;
         private System.Windows.Forms.RichTextBox tb_Log;
+        private System.Windows.Forms.ProgressBar PB_CurrentVolume;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox PictureBox;
+        private System.Windows.Forms.Button Btn_UpdateScreenshot;
     }
 }
 
