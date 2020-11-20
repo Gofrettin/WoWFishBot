@@ -59,11 +59,14 @@
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.Btn_UpdateScreenshot = new System.Windows.Forms.Button();
             this.Btn_GetVolume = new System.Windows.Forms.Button();
+            this.VolumeBar = new System.Windows.Forms.TrackBar();
+            this.VolumeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.SuspendLayout();
             // 
             // Inp_TriggerVol
@@ -320,6 +323,7 @@
             this.PB_CurrentVolume.Name = "PB_CurrentVolume";
             this.PB_CurrentVolume.Size = new System.Drawing.Size(102, 23);
             this.PB_CurrentVolume.TabIndex = 38;
+            this.PB_CurrentVolume.Value = 50;
             // 
             // label5
             // 
@@ -360,11 +364,31 @@
             this.Btn_GetVolume.UseVisualStyleBackColor = true;
             this.Btn_GetVolume.Click += new System.EventHandler(this.Btn_GetVolume_Click);
             // 
+            // VolumeBar
+            // 
+            this.VolumeBar.Location = new System.Drawing.Point(12, 536);
+            this.VolumeBar.Maximum = 100;
+            this.VolumeBar.Name = "VolumeBar";
+            this.VolumeBar.Size = new System.Drawing.Size(747, 45);
+            this.VolumeBar.TabIndex = 43;
+            this.VolumeBar.ValueChanged += new System.EventHandler(this.VolumeBar_ValueChanged);
+            // 
+            // VolumeLabel
+            // 
+            this.VolumeLabel.AutoSize = true;
+            this.VolumeLabel.Location = new System.Drawing.Point(12, 568);
+            this.VolumeLabel.Name = "VolumeLabel";
+            this.VolumeLabel.Size = new System.Drawing.Size(21, 13);
+            this.VolumeLabel.TabIndex = 44;
+            this.VolumeLabel.Text = "0%";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 606);
+            this.Controls.Add(this.VolumeLabel);
+            this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.Btn_GetVolume);
             this.Controls.Add(this.Btn_UpdateScreenshot);
             this.Controls.Add(this.PictureBox);
@@ -403,6 +427,7 @@
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,6 +466,8 @@
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button Btn_UpdateScreenshot;
         private System.Windows.Forms.Button Btn_GetVolume;
+        private System.Windows.Forms.TrackBar VolumeBar;
+        private System.Windows.Forms.Label VolumeLabel;
     }
 }
 

@@ -15,7 +15,10 @@ namespace WoWFishBot
         public MainForm()
         {
             InitializeComponent();
+
+
         }
+  
 
         public void UpdateStatusBar(string status)
         {
@@ -39,6 +42,7 @@ namespace WoWFishBot
         public void UpdateVolumeBar(int percent)
         {
             PB_CurrentVolume.Value = percent;
+            VolumeBar.Value = percent;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -82,6 +86,11 @@ namespace WoWFishBot
         private void Btn_GetVolume_Click(object sender, EventArgs e)
         {
             Audio.test();
+        }
+
+        private void VolumeBar_ValueChanged(object sender, EventArgs e)
+        {
+            VolumeLabel.Text = VolumeBar.Value.ToString() + "%";
         }
     }
 }

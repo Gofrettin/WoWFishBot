@@ -11,13 +11,15 @@ namespace WoWFishBot
 {
     class Audio
     {
+        // TODO: get X second peak
+
+
         public static void test()
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
             bw.RunWorkerAsync();
-            
         }
 
         private static void bw_DoWork(object sender, DoWorkEventArgs e)
