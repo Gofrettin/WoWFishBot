@@ -36,6 +36,10 @@ namespace WoWFishBot
             Logger.Log("Updating picture box");
             PictureBox.Image = picture;
         }
+        public void UpdateVolumeBar(int percent)
+        {
+            PB_CurrentVolume.Value = percent;
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -74,5 +78,10 @@ namespace WoWFishBot
         private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill(3000);
         private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor(3000);
         private void Btn_UpdateScreenshot_Click(object sender, EventArgs e) => Bot.CaptureScreen();
+
+        private void Btn_GetVolume_Click(object sender, EventArgs e)
+        {
+            Audio.test();
+        }
     }
 }

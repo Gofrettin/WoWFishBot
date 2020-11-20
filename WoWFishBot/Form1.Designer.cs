@@ -58,6 +58,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.Btn_UpdateScreenshot = new System.Windows.Forms.Button();
+            this.Btn_GetVolume = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
@@ -146,7 +147,7 @@
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 603);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 584);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.Size = new System.Drawing.Size(800, 22);
             this.StatusStrip.TabIndex = 8;
@@ -307,22 +308,23 @@
             // 
             this.tb_Log.Location = new System.Drawing.Point(15, 324);
             this.tb_Log.Name = "tb_Log";
-            this.tb_Log.Size = new System.Drawing.Size(528, 208);
+            this.tb_Log.Size = new System.Drawing.Size(744, 208);
             this.tb_Log.TabIndex = 37;
             this.tb_Log.Text = "";
             this.tb_Log.WordWrap = false;
             // 
             // PB_CurrentVolume
             // 
-            this.PB_CurrentVolume.Location = new System.Drawing.Point(400, 30);
+            this.PB_CurrentVolume.Location = new System.Drawing.Point(109, 115);
+            this.PB_CurrentVolume.MarqueeAnimationSpeed = 0;
             this.PB_CurrentVolume.Name = "PB_CurrentVolume";
-            this.PB_CurrentVolume.Size = new System.Drawing.Size(160, 23);
+            this.PB_CurrentVolume.Size = new System.Drawing.Size(102, 23);
             this.PB_CurrentVolume.TabIndex = 38;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(397, 11);
+            this.label5.Location = new System.Drawing.Point(9, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 39;
@@ -330,9 +332,10 @@
             // 
             // PictureBox
             // 
-            this.PictureBox.Location = new System.Drawing.Point(252, 66);
+            this.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBox.Location = new System.Drawing.Point(252, 12);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(507, 241);
+            this.PictureBox.Size = new System.Drawing.Size(507, 295);
             this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox.TabIndex = 40;
             this.PictureBox.TabStop = false;
@@ -347,11 +350,22 @@
             this.Btn_UpdateScreenshot.UseVisualStyleBackColor = true;
             this.Btn_UpdateScreenshot.Click += new System.EventHandler(this.Btn_UpdateScreenshot_Click);
             // 
+            // Btn_GetVolume
+            // 
+            this.Btn_GetVolume.Location = new System.Drawing.Point(217, 115);
+            this.Btn_GetVolume.Name = "Btn_GetVolume";
+            this.Btn_GetVolume.Size = new System.Drawing.Size(29, 23);
+            this.Btn_GetVolume.TabIndex = 42;
+            this.Btn_GetVolume.Text = ">";
+            this.Btn_GetVolume.UseVisualStyleBackColor = true;
+            this.Btn_GetVolume.Click += new System.EventHandler(this.Btn_GetVolume_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 625);
+            this.ClientSize = new System.Drawing.Size(800, 606);
+            this.Controls.Add(this.Btn_GetVolume);
             this.Controls.Add(this.Btn_UpdateScreenshot);
             this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.label5);
@@ -426,6 +440,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button Btn_UpdateScreenshot;
+        private System.Windows.Forms.Button Btn_GetVolume;
     }
 }
 
