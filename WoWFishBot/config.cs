@@ -22,7 +22,6 @@ namespace WoWFishBot
         public static Point lureLocation { get; set; }
         public static Point skillLocation { get; set; }
         public static Color searchColor { get; set; }
-        private static Size searchRectangleSize;
 
 
         /// <summary>
@@ -32,6 +31,9 @@ namespace WoWFishBot
         {
             Logger.Log("Capturing settings");
             Program.mainForm.ClearAllCaptureInputs();
+
+            // START CAPTURE PEAK VOLUME
+            Audio.GetPeakVolume();
 
             // TOP LEFT
             Bot.Sleep(1000);
@@ -64,28 +66,28 @@ namespace WoWFishBot
         public static void CaptureTopLeft(int captureDelay = 0)
         {
             Bot.Sleep(captureDelay);
-            topLeftCords = Bot.GetMouseLocation();
+            topLeftCords = Mouse.CurrentLocation();
             Program.mainForm.TopLeft.Text = topLeftCords.ToString();
             Logger.Log($"Top left captured: {topLeftCords}");
         }
         public static void CaptureBottomRight(int captureDelay = 0)
         {
             Bot.Sleep(captureDelay);
-            bottomRightCords = Bot.GetMouseLocation();
+            bottomRightCords = Mouse.CurrentLocation();
             Program.mainForm.BottomRight.Text = bottomRightCords.ToString();
             Logger.Log($"Bottom right captured: {bottomRightCords}");
         }
         public static void CaptureLureSkill(int captureDelay = 0)
         {
             Bot.Sleep(captureDelay);
-            lureLocation = Bot.GetMouseLocation();
+            lureLocation = Mouse.CurrentLocation();
             Program.mainForm.LureSkill.Text = lureLocation.ToString();
             Logger.Log($"Lure skill captured: {lureLocation}");
         }
         public static void CaptureFishSkill(int captureDelay = 0)
         {
             Bot.Sleep(captureDelay);
-            skillLocation = Bot.GetMouseLocation();
+            skillLocation = Mouse.CurrentLocation();
             Program.mainForm.FishSkill.Text = skillLocation.ToString();
             Logger.Log($"Fish skill captured: {skillLocation}");
         }

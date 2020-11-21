@@ -25,23 +25,23 @@ namespace WoWFishBot
 
         // GLOBALS
         private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
-        private static Random randomNumber = new Random();
+        public static Random randomNumber = new Random();
+
         private static float saturationFactor_MAYBE = 1;
         private static float brightnessFactor_MAYBE = 1;
         private static Size searchRectangleSize;
         private static List<Color> foundColorList = new List<Color>();
         private static List<Point> locationList = new List<Point>();
 
-        //Lure
+        // Lure
         private static System.Timers.Timer lureTimer;
         private static bool lureBuffExpired = false;
         public static void Sleep(int time) => Task.Delay(time).Wait();
 
-        /// <summary>
-        /// Gets mouse location as a Point
-        /// </summary>
-        /// <returns></returns>
-        public static Point GetMouseLocation() => new Point(Cursor.Position.X, Cursor.Position.Y);
+        // Misc
+        public static int currentVolume { get; set; }
+
+ 
 
         /// <summary>
         /// Gets color at specified location
@@ -69,7 +69,7 @@ namespace WoWFishBot
         /// Gets color at cursor location
         /// </summary>
         /// <returns></returns>
-        public static Color GetColorAtLocation() => GetColorAtLocation(GetMouseLocation());
+        public static Color GetColorAtLocation() => GetColorAtLocation(Mouse.CurrentLocation());
 
         private static void GenerateCaptureRectangle() => searchRectangleSize = new Size(Config.bottomRightCords.X - Config.topLeftCords.X, Config.bottomRightCords.Y - Config.topLeftCords.Y);
 
@@ -90,6 +90,53 @@ namespace WoWFishBot
             GenerateCaptureRectangle();
 
         }
+
+        private static bool ListenForSplash(int timeout = 200, int updateRate = 100)
+        {
+            Program.mainForm.UpdateStatusBar("Listening for spash...");
+            Point location;
+
+            for (int i = 0; i < timeout; i++)
+            {
+                Audio.GetCurrentVolume();
+
+                if (currentVolume >= Config.triggerVolumePercent)
+                {
+                    // Test for pause
+                    location = Mouse.CurrentLocation();
+                    if (location.X <= 25 && location.Y <= 25)
+                    {
+                        Logger.Log("Pause requested");
+                        //Pause(); TODO
+                        return false;
+                    }
+                    else
+                    {
+                        Logger.Log("Splash detected");
+                        return true;
+                    }
+                }
+
+                Mouse.RandomSway();
+
+                // Rate to check volume
+                Sleep(updateRate);
+            }
+
+            //Timeout Reached
+            Logger.Log("Splash timeout detected");
+            location = Mouse.CurrentLocation();
+            if (location.X <= 25 && location.Y <= 25)
+            {
+                Logger.Log("Pause requested");
+                //Pause();
+            }
+
+
+            return false;
+        }
+
+       
 
 
 

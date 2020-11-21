@@ -82,7 +82,7 @@ namespace WoWFishBot
 
         private void Btn_GetVolume_Click(object sender, EventArgs e)
         {
-            Audio.test();
+            Audio.GetPeakVolume();
         }
 
         private void VolumeBar_ValueChanged(object sender, EventArgs e)

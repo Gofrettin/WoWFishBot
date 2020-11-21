@@ -11,33 +11,45 @@ namespace WoWFishBot
 {
     class Audio
     {
-        // TODO: get X second peak
-
-
-        public static void test()
+        public static void GetCurrentVolume()
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
-            bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.DoWork += new DoWorkEventHandler(bw_GetCurrentVolume_DoWork);
+            bw.WorkerReportsProgress = true;
+
+            Program.mainForm.UpdateStatusBar("Capturing peak volume...");
+            bw.RunWorkerAsync();
+        }
+        private static void bw_GetCurrentVolume_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = GetCurrentMachineVolume();
+            Bot.currentVolume = (int)e.Result;
+        }
+
+        public static void GetPeakVolume()
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(bw_GetPeakVolume_DoWork);
+            bw.ProgressChanged += new ProgressChangedEventHandler(bw_GetPeakVolume_ProgressChanged);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_GetPeakVolume_RunWorkerCompleted);
             bw.WorkerReportsProgress = true;
 
             Program.mainForm.UpdateStatusBar("Capturing peak volume...");
             bw.RunWorkerAsync();
         }
 
-        private static void bw_DoWork(object sender, DoWorkEventArgs e)
+        private static void bw_GetPeakVolume_DoWork(object sender, DoWorkEventArgs e)
         {
             e.Result = GetPeakVolumeOverTime(sender);
         }
 
-        private static void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private static void bw_GetPeakVolume_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int peakVolume = e.ProgressPercentage;
             Program.mainForm.CurrentVolumeBar(peakVolume);
         }
 
-        private static void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private static void bw_GetPeakVolume_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             int peakVolume = (int)e.Result;
             Program.mainForm.CurrentVolumeBar(peakVolume);
@@ -57,7 +69,7 @@ namespace WoWFishBot
             }
         }
 
-        private static int GetCurrentVolume()
+        private static int GetCurrentMachineVolume()
         {
             int currentVolume = 0;
             using (var sessionManager = GetSoundSession(DataFlow.Render))
@@ -85,7 +97,7 @@ namespace WoWFishBot
 
             for (int i = 0; i < seconds*10; i++)
             {
-                volumeHistory.Add(GetCurrentVolume());
+                volumeHistory.Add(GetCurrentMachineVolume());
                 worker.ReportProgress(volumeHistory.Max());
                 Bot.Sleep(100);
             }

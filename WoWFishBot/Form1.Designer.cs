@@ -166,7 +166,7 @@
             // 
             // btnCaptureAll
             // 
-            this.btnCaptureAll.Location = new System.Drawing.Point(12, 198);
+            this.btnCaptureAll.Location = new System.Drawing.Point(12, 171);
             this.btnCaptureAll.Name = "btnCaptureAll";
             this.btnCaptureAll.Size = new System.Drawing.Size(234, 23);
             this.btnCaptureAll.TabIndex = 9;
@@ -320,7 +320,7 @@
             // 
             // PB_CurrentVolume
             // 
-            this.PB_CurrentVolume.Location = new System.Drawing.Point(137, 171);
+            this.PB_CurrentVolume.Location = new System.Drawing.Point(137, 199);
             this.PB_CurrentVolume.MarqueeAnimationSpeed = 0;
             this.PB_CurrentVolume.Name = "PB_CurrentVolume";
             this.PB_CurrentVolume.Size = new System.Drawing.Size(74, 21);
@@ -329,7 +329,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 176);
+            this.label5.Location = new System.Drawing.Point(12, 204);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 39;
@@ -347,7 +347,7 @@
             // 
             // Btn_UpdateScreenshot
             // 
-            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(730, 284);
+            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(730, 330);
             this.Btn_UpdateScreenshot.Name = "Btn_UpdateScreenshot";
             this.Btn_UpdateScreenshot.Size = new System.Drawing.Size(29, 23);
             this.Btn_UpdateScreenshot.TabIndex = 41;
@@ -357,7 +357,7 @@
             // 
             // Btn_GetVolume
             // 
-            this.Btn_GetVolume.Location = new System.Drawing.Point(217, 171);
+            this.Btn_GetVolume.Location = new System.Drawing.Point(217, 199);
             this.Btn_GetVolume.Name = "Btn_GetVolume";
             this.Btn_GetVolume.Size = new System.Drawing.Size(29, 23);
             this.Btn_GetVolume.TabIndex = 42;
@@ -395,7 +395,7 @@
             // Lb_CurrentVolume
             // 
             this.Lb_CurrentVolume.AutoSize = true;
-            this.Lb_CurrentVolume.Location = new System.Drawing.Point(106, 176);
+            this.Lb_CurrentVolume.Location = new System.Drawing.Point(106, 204);
             this.Lb_CurrentVolume.Name = "Lb_CurrentVolume";
             this.Lb_CurrentVolume.Size = new System.Drawing.Size(21, 13);
             this.Lb_CurrentVolume.TabIndex = 46;
