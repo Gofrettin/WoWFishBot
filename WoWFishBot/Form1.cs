@@ -15,14 +15,11 @@ namespace WoWFishBot
         public MainForm()
         {
             InitializeComponent();
-
-
         }
   
 
         public void UpdateStatusBar(string status)
         {
-            Logger.Log($"Updating status bar to '{status}'", false);
             StatusLabel.Text = status;
             StatusStrip.Update();
         }
@@ -39,10 +36,10 @@ namespace WoWFishBot
             Logger.Log("Updating picture box");
             PictureBox.Image = picture;
         }
-        public void UpdateVolumeBar(int percent)
+        public void CurrentVolumeBar(int percent)
         {
             PB_CurrentVolume.Value = percent;
-            VolumeBar.Value = percent;
+            Lb_CurrentVolume.Text = percent.ToString() + "%";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -90,7 +87,7 @@ namespace WoWFishBot
 
         private void VolumeBar_ValueChanged(object sender, EventArgs e)
         {
-            VolumeLabel.Text = VolumeBar.Value.ToString() + "%";
+            Lb_PickedVolume.Text = VolumeBar.Value.ToString() + "%";
         }
     }
 }

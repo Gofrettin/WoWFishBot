@@ -18,27 +18,35 @@ namespace WoWFishBot
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.WorkerReportsProgress = true;
+
+            Program.mainForm.UpdateStatusBar("Capturing peak volume...");
             bw.RunWorkerAsync();
         }
 
         private static void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = GetCurrentVolume();
+            e.Result = GetPeakVolumeOverTime(sender);
+        }
+
+        private static void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int peakVolume = e.ProgressPercentage;
+            Program.mainForm.CurrentVolumeBar(peakVolume);
         }
 
         private static void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            int currentVolume = (int)e.Result;
-            Logger.Log($"Current Volume: {currentVolume}%");
-            Program.mainForm.UpdateVolumeBar(currentVolume);
+            int peakVolume = (int)e.Result;
+            Program.mainForm.CurrentVolumeBar(peakVolume);
+            Program.mainForm.UpdateStatusBar($"Peak volume captured: {peakVolume}%");
         }
 
         //AUDIO RELATED
-        public static AudioSessionManager2 GetSoundSession(DataFlow dataFlow)
+        private static AudioSessionManager2 GetSoundSession(DataFlow dataFlow)
         {
-            
-
             using (var enumerator = new MMDeviceEnumerator())
             {
                 using (var device = enumerator.GetDefaultAudioEndpoint(dataFlow, Role.Multimedia))
@@ -49,7 +57,7 @@ namespace WoWFishBot
             }
         }
 
-        public static int GetCurrentVolume()
+        private static int GetCurrentVolume()
         {
             int currentVolume = 0;
             using (var sessionManager = GetSoundSession(DataFlow.Render))
@@ -68,6 +76,21 @@ namespace WoWFishBot
                 }
             }
             return currentVolume;
+        }
+
+        private static int GetPeakVolumeOverTime(object sender, int seconds = 10)
+        {
+            List<int> volumeHistory = new List<int>();
+            BackgroundWorker worker = (BackgroundWorker)sender;
+
+            for (int i = 0; i < seconds*10; i++)
+            {
+                volumeHistory.Add(GetCurrentVolume());
+                worker.ReportProgress(volumeHistory.Max());
+                Bot.Sleep(100);
+            }
+
+            return volumeHistory.Max();
         }
     }
 }

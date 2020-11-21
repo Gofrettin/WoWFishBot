@@ -60,7 +60,9 @@
             this.Btn_UpdateScreenshot = new System.Windows.Forms.Button();
             this.Btn_GetVolume = new System.Windows.Forms.Button();
             this.VolumeBar = new System.Windows.Forms.TrackBar();
-            this.VolumeLabel = new System.Windows.Forms.Label();
+            this.Lb_PickedVolume = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Lb_CurrentVolume = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
@@ -77,7 +79,7 @@
             0,
             0,
             0});
-            this.Inp_TriggerVol.Location = new System.Drawing.Point(144, 12);
+            this.Inp_TriggerVol.Location = new System.Drawing.Point(179, 12);
             this.Inp_TriggerVol.Name = "Inp_TriggerVol";
             this.Inp_TriggerVol.Size = new System.Drawing.Size(67, 20);
             this.Inp_TriggerVol.TabIndex = 0;
@@ -108,7 +110,7 @@
             0,
             0,
             0});
-            this.Inp_SleepChance.Location = new System.Drawing.Point(144, 38);
+            this.Inp_SleepChance.Location = new System.Drawing.Point(179, 38);
             this.Inp_SleepChance.Name = "Inp_SleepChance";
             this.Inp_SleepChance.Size = new System.Drawing.Size(67, 20);
             this.Inp_SleepChance.TabIndex = 2;
@@ -130,7 +132,7 @@
             0,
             0,
             0});
-            this.Inp_DelayMultiplier.Location = new System.Drawing.Point(144, 64);
+            this.Inp_DelayMultiplier.Location = new System.Drawing.Point(179, 64);
             this.Inp_DelayMultiplier.Name = "Inp_DelayMultiplier";
             this.Inp_DelayMultiplier.Size = new System.Drawing.Size(67, 20);
             this.Inp_DelayMultiplier.TabIndex = 4;
@@ -152,7 +154,7 @@
             this.StatusLabel});
             this.StatusStrip.Location = new System.Drawing.Point(0, 584);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(800, 22);
+            this.StatusStrip.Size = new System.Drawing.Size(781, 22);
             this.StatusStrip.TabIndex = 8;
             this.StatusStrip.Text = "statusStrip1";
             // 
@@ -164,7 +166,7 @@
             // 
             // btnCaptureAll
             // 
-            this.btnCaptureAll.Location = new System.Drawing.Point(12, 154);
+            this.btnCaptureAll.Location = new System.Drawing.Point(12, 198);
             this.btnCaptureAll.Name = "btnCaptureAll";
             this.btnCaptureAll.Size = new System.Drawing.Size(234, 23);
             this.btnCaptureAll.TabIndex = 9;
@@ -175,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 185);
+            this.label4.Location = new System.Drawing.Point(12, 229);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 11;
@@ -184,7 +186,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 211);
+            this.label6.Location = new System.Drawing.Point(12, 255);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 15;
@@ -193,7 +195,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 237);
+            this.label8.Location = new System.Drawing.Point(12, 281);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 19;
@@ -202,7 +204,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 263);
+            this.label11.Location = new System.Drawing.Point(12, 307);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 13);
             this.label11.TabIndex = 23;
@@ -211,7 +213,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 289);
+            this.label12.Location = new System.Drawing.Point(9, 333);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 26;
@@ -220,7 +222,7 @@
             // Inp_BobberColor
             // 
             this.Inp_BobberColor.Enabled = false;
-            this.Inp_BobberColor.Location = new System.Drawing.Point(109, 286);
+            this.Inp_BobberColor.Location = new System.Drawing.Point(109, 330);
             this.Inp_BobberColor.Name = "Inp_BobberColor";
             this.Inp_BobberColor.Size = new System.Drawing.Size(102, 20);
             this.Inp_BobberColor.TabIndex = 27;
@@ -228,7 +230,7 @@
             // Inp_TopLeft
             // 
             this.Inp_TopLeft.Enabled = false;
-            this.Inp_TopLeft.Location = new System.Drawing.Point(109, 182);
+            this.Inp_TopLeft.Location = new System.Drawing.Point(109, 226);
             this.Inp_TopLeft.Name = "Inp_TopLeft";
             this.Inp_TopLeft.Size = new System.Drawing.Size(102, 20);
             this.Inp_TopLeft.TabIndex = 28;
@@ -236,7 +238,7 @@
             // Inp_BottomRight
             // 
             this.Inp_BottomRight.Enabled = false;
-            this.Inp_BottomRight.Location = new System.Drawing.Point(109, 208);
+            this.Inp_BottomRight.Location = new System.Drawing.Point(109, 252);
             this.Inp_BottomRight.Name = "Inp_BottomRight";
             this.Inp_BottomRight.Size = new System.Drawing.Size(102, 20);
             this.Inp_BottomRight.TabIndex = 29;
@@ -244,7 +246,7 @@
             // Inp_LureSkill
             // 
             this.Inp_LureSkill.Enabled = false;
-            this.Inp_LureSkill.Location = new System.Drawing.Point(109, 234);
+            this.Inp_LureSkill.Location = new System.Drawing.Point(109, 278);
             this.Inp_LureSkill.Name = "Inp_LureSkill";
             this.Inp_LureSkill.Size = new System.Drawing.Size(102, 20);
             this.Inp_LureSkill.TabIndex = 30;
@@ -252,14 +254,14 @@
             // Inp_FishSkill
             // 
             this.Inp_FishSkill.Enabled = false;
-            this.Inp_FishSkill.Location = new System.Drawing.Point(109, 260);
+            this.Inp_FishSkill.Location = new System.Drawing.Point(109, 304);
             this.Inp_FishSkill.Name = "Inp_FishSkill";
             this.Inp_FishSkill.Size = new System.Drawing.Size(102, 20);
             this.Inp_FishSkill.TabIndex = 31;
             // 
             // Btn_CaptureTopLeft
             // 
-            this.Btn_CaptureTopLeft.Location = new System.Drawing.Point(217, 182);
+            this.Btn_CaptureTopLeft.Location = new System.Drawing.Point(217, 226);
             this.Btn_CaptureTopLeft.Name = "Btn_CaptureTopLeft";
             this.Btn_CaptureTopLeft.Size = new System.Drawing.Size(29, 23);
             this.Btn_CaptureTopLeft.TabIndex = 32;
@@ -269,7 +271,7 @@
             // 
             // Btn_CaptureBottomRight
             // 
-            this.Btn_CaptureBottomRight.Location = new System.Drawing.Point(217, 206);
+            this.Btn_CaptureBottomRight.Location = new System.Drawing.Point(217, 250);
             this.Btn_CaptureBottomRight.Name = "Btn_CaptureBottomRight";
             this.Btn_CaptureBottomRight.Size = new System.Drawing.Size(29, 23);
             this.Btn_CaptureBottomRight.TabIndex = 33;
@@ -279,7 +281,7 @@
             // 
             // Btn_CaptureLureSkill
             // 
-            this.Btn_CaptureLureSkill.Location = new System.Drawing.Point(217, 232);
+            this.Btn_CaptureLureSkill.Location = new System.Drawing.Point(217, 276);
             this.Btn_CaptureLureSkill.Name = "Btn_CaptureLureSkill";
             this.Btn_CaptureLureSkill.Size = new System.Drawing.Size(29, 23);
             this.Btn_CaptureLureSkill.TabIndex = 34;
@@ -289,7 +291,7 @@
             // 
             // Btn_CaptureFishSkill
             // 
-            this.Btn_CaptureFishSkill.Location = new System.Drawing.Point(217, 258);
+            this.Btn_CaptureFishSkill.Location = new System.Drawing.Point(217, 302);
             this.Btn_CaptureFishSkill.Name = "Btn_CaptureFishSkill";
             this.Btn_CaptureFishSkill.Size = new System.Drawing.Size(29, 23);
             this.Btn_CaptureFishSkill.TabIndex = 35;
@@ -299,7 +301,7 @@
             // 
             // Btn_CaptureBobberColor
             // 
-            this.Btn_CaptureBobberColor.Location = new System.Drawing.Point(217, 284);
+            this.Btn_CaptureBobberColor.Location = new System.Drawing.Point(217, 328);
             this.Btn_CaptureBobberColor.Name = "Btn_CaptureBobberColor";
             this.Btn_CaptureBobberColor.Size = new System.Drawing.Size(29, 23);
             this.Btn_CaptureBobberColor.TabIndex = 36;
@@ -309,7 +311,7 @@
             // 
             // tb_Log
             // 
-            this.tb_Log.Location = new System.Drawing.Point(15, 324);
+            this.tb_Log.Location = new System.Drawing.Point(15, 357);
             this.tb_Log.Name = "tb_Log";
             this.tb_Log.Size = new System.Drawing.Size(744, 208);
             this.tb_Log.TabIndex = 37;
@@ -318,28 +320,27 @@
             // 
             // PB_CurrentVolume
             // 
-            this.PB_CurrentVolume.Location = new System.Drawing.Point(109, 115);
+            this.PB_CurrentVolume.Location = new System.Drawing.Point(137, 171);
             this.PB_CurrentVolume.MarqueeAnimationSpeed = 0;
             this.PB_CurrentVolume.Name = "PB_CurrentVolume";
-            this.PB_CurrentVolume.Size = new System.Drawing.Size(102, 23);
+            this.PB_CurrentVolume.Size = new System.Drawing.Size(74, 21);
             this.PB_CurrentVolume.TabIndex = 38;
-            this.PB_CurrentVolume.Value = 50;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 125);
+            this.label5.Location = new System.Drawing.Point(12, 176);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 39;
-            this.label5.Text = "Current Volume";
+            this.label5.Text = "Peak Volume";
             // 
             // PictureBox
             // 
             this.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureBox.Location = new System.Drawing.Point(252, 12);
+            this.PictureBox.Location = new System.Drawing.Point(252, 14);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(507, 295);
+            this.PictureBox.Size = new System.Drawing.Size(507, 337);
             this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox.TabIndex = 40;
             this.PictureBox.TabStop = false;
@@ -356,7 +357,7 @@
             // 
             // Btn_GetVolume
             // 
-            this.Btn_GetVolume.Location = new System.Drawing.Point(217, 115);
+            this.Btn_GetVolume.Location = new System.Drawing.Point(217, 171);
             this.Btn_GetVolume.Name = "Btn_GetVolume";
             this.Btn_GetVolume.Size = new System.Drawing.Size(29, 23);
             this.Btn_GetVolume.TabIndex = 42;
@@ -366,28 +367,48 @@
             // 
             // VolumeBar
             // 
-            this.VolumeBar.Location = new System.Drawing.Point(12, 536);
+            this.VolumeBar.Location = new System.Drawing.Point(96, 120);
             this.VolumeBar.Maximum = 100;
             this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(747, 45);
+            this.VolumeBar.Size = new System.Drawing.Size(150, 45);
             this.VolumeBar.TabIndex = 43;
             this.VolumeBar.ValueChanged += new System.EventHandler(this.VolumeBar_ValueChanged);
             // 
-            // VolumeLabel
+            // Lb_PickedVolume
             // 
-            this.VolumeLabel.AutoSize = true;
-            this.VolumeLabel.Location = new System.Drawing.Point(12, 568);
-            this.VolumeLabel.Name = "VolumeLabel";
-            this.VolumeLabel.Size = new System.Drawing.Size(21, 13);
-            this.VolumeLabel.TabIndex = 44;
-            this.VolumeLabel.Text = "0%";
+            this.Lb_PickedVolume.AutoSize = true;
+            this.Lb_PickedVolume.Location = new System.Drawing.Point(159, 104);
+            this.Lb_PickedVolume.Name = "Lb_PickedVolume";
+            this.Lb_PickedVolume.Size = new System.Drawing.Size(21, 13);
+            this.Lb_PickedVolume.TabIndex = 44;
+            this.Lb_PickedVolume.Text = "0%";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 132);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Trigger Volume";
+            // 
+            // Lb_CurrentVolume
+            // 
+            this.Lb_CurrentVolume.AutoSize = true;
+            this.Lb_CurrentVolume.Location = new System.Drawing.Point(106, 176);
+            this.Lb_CurrentVolume.Name = "Lb_CurrentVolume";
+            this.Lb_CurrentVolume.Size = new System.Drawing.Size(21, 13);
+            this.Lb_CurrentVolume.TabIndex = 46;
+            this.Lb_CurrentVolume.Text = "0%";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 606);
-            this.Controls.Add(this.VolumeLabel);
+            this.ClientSize = new System.Drawing.Size(781, 606);
+            this.Controls.Add(this.Lb_CurrentVolume);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Lb_PickedVolume);
             this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.Btn_GetVolume);
             this.Controls.Add(this.Btn_UpdateScreenshot);
@@ -467,7 +488,9 @@
         private System.Windows.Forms.Button Btn_UpdateScreenshot;
         private System.Windows.Forms.Button Btn_GetVolume;
         private System.Windows.Forms.TrackBar VolumeBar;
-        private System.Windows.Forms.Label VolumeLabel;
+        private System.Windows.Forms.Label Lb_PickedVolume;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Lb_CurrentVolume;
     }
 }
 
