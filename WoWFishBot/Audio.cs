@@ -99,7 +99,7 @@ namespace WoWFishBot
             {
                 volumeHistory.Add(GetCurrentMachineVolume());
                 worker.ReportProgress(volumeHistory.Max());
-                Bot.Sleep(100);
+                Util.Sleep(100);
             }
 
             return volumeHistory.Max();

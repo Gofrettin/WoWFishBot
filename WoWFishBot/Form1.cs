@@ -47,7 +47,7 @@ namespace WoWFishBot
             Logger.Log("Updating settings");
             Config.triggerVolumePercent = float.Parse(Inp_TriggerVol.Text);
             Config.sleepChancePercent = float.Parse(Inp_SleepChance.Text);
-            Config.delayMultiplyer = float.Parse(Inp_DelayMultiplier.Text);
+            Config.sleepMultiplier = float.Parse(Inp_DelayMultiplier.Text);
             Config.useLure = cb_UseLure.Checked;
 
             UpdateStatusBar("Settings saved");

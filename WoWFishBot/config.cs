@@ -15,7 +15,7 @@ namespace WoWFishBot
         // CONFIG
         public static float triggerVolumePercent { get; set; }
         public static float sleepChancePercent { get; set; }
-        public static float delayMultiplyer { get; set; }
+        public static float sleepMultiplier { get; set; }
         public static bool useLure { get; set; }
         public static Point topLeftCords { get; set; }
         public static Point bottomRightCords { get; set; }
@@ -36,27 +36,27 @@ namespace WoWFishBot
             Audio.GetPeakVolume();
 
             // TOP LEFT
-            Bot.Sleep(1000);
+            Util.Sleep(1000);
             CaptureTopLeft();
             //Console.Beep();
 
             // BOTTOM RIGHT
-            Bot.Sleep(1000);
+            Util.Sleep(1000);
             CaptureBottomRight();
             //Console.Beep();
 
             // LURE
-            Bot.Sleep(1000);
+            Util.Sleep(1000);
             CaptureLureSkill();
             //Console.Beep();
 
             // SKILL
-            Bot.Sleep(1000);
+            Util.Sleep(1000);
             CaptureFishSkill();
             //Console.Beep();
 
             // COLOR => TODO
-            Bot.Sleep(1000);
+            Util.Sleep(1000);
             CaptureBobberColor();
             //Console.Beep();
 
@@ -65,35 +65,35 @@ namespace WoWFishBot
 
         public static void CaptureTopLeft(int captureDelay = 0)
         {
-            Bot.Sleep(captureDelay);
+            Util.Sleep(captureDelay);
             topLeftCords = Mouse.CurrentLocation();
             Program.mainForm.TopLeft.Text = topLeftCords.ToString();
             Logger.Log($"Top left captured: {topLeftCords}");
         }
         public static void CaptureBottomRight(int captureDelay = 0)
         {
-            Bot.Sleep(captureDelay);
+            Util.Sleep(captureDelay);
             bottomRightCords = Mouse.CurrentLocation();
             Program.mainForm.BottomRight.Text = bottomRightCords.ToString();
             Logger.Log($"Bottom right captured: {bottomRightCords}");
         }
         public static void CaptureLureSkill(int captureDelay = 0)
         {
-            Bot.Sleep(captureDelay);
+            Util.Sleep(captureDelay);
             lureLocation = Mouse.CurrentLocation();
             Program.mainForm.LureSkill.Text = lureLocation.ToString();
             Logger.Log($"Lure skill captured: {lureLocation}");
         }
         public static void CaptureFishSkill(int captureDelay = 0)
         {
-            Bot.Sleep(captureDelay);
+            Util.Sleep(captureDelay);
             skillLocation = Mouse.CurrentLocation();
             Program.mainForm.FishSkill.Text = skillLocation.ToString();
             Logger.Log($"Fish skill captured: {skillLocation}");
         }
         public static void CaptureBobberColor(int captureDelay = 0)
         {
-            Bot.Sleep(captureDelay);
+            Util.Sleep(captureDelay);
             searchColor = Bot.GetColorAtLocation();
             Program.mainForm.BobberColor.Text = $"{searchColor.R}, {searchColor.G}, {searchColor.B}";
             Logger.Log($"Bobber color captured: {searchColor}");

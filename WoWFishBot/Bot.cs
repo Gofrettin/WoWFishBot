@@ -25,7 +25,6 @@ namespace WoWFishBot
 
         // GLOBALS
         private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
-        public static Random randomNumber = new Random();
 
         private static float saturationFactor_MAYBE = 1;
         private static float brightnessFactor_MAYBE = 1;
@@ -36,7 +35,6 @@ namespace WoWFishBot
         // Lure
         private static System.Timers.Timer lureTimer;
         private static bool lureBuffExpired = false;
-        public static void Sleep(int time) => Task.Delay(time).Wait();
 
         // Misc
         public static int currentVolume { get; set; }
@@ -89,6 +87,27 @@ namespace WoWFishBot
             // init
             GenerateCaptureRectangle();
 
+            //Main Loop
+            while (true)
+            {
+                if (ListenForSplash())
+                {
+                    //RandomDelay(100, 2100); //Not required with RDP lag
+                    Mouse.Click(0, 0, false); // right click at current mouse loc
+                }
+                Util.RandomSleep();
+
+                // use Lure if needed
+                //if (useLure && lureBuffExpired)
+                //{
+                //    //UseLureMacro();
+                //    Util.RandomSleep(10000, 12500);
+                //}
+
+                //UseFishSkill();
+                Util.Sleep(3000); //Allow time for bobber to show
+                //FindBobber(2);
+            }
         }
 
         private static bool ListenForSplash(int timeout = 200, int updateRate = 100)

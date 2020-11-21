@@ -52,7 +52,7 @@ namespace WoWFishBot
             {
                 iterPoint = new PointF(iterPoint.X + slope.X, iterPoint.Y + slope.Y);
                 MouseMove(Point.Round(iterPoint));
-                Bot.Sleep(delay);
+                Util.Sleep(delay);
             }
             MouseMove(newPosition);
         }
@@ -65,15 +65,39 @@ namespace WoWFishBot
         public static void RandomSway(int chanceToDo = 1, int swayDistance = 10)
         {
             // Only do X % of the time
-            if (Bot.randomNumber.Next(1, 100) >= chanceToDo)
+            if (Util.rand.Next(1, 100) >= chanceToDo)
                 return;
 
             Point currentLoc = CurrentLocation();
             Point newLoc = new Point(
-                currentLoc.X + Bot.randomNumber.Next(-swayDistance, swayDistance), 
-                currentLoc.Y + Bot.randomNumber.Next(-swayDistance, swayDistance));
+                currentLoc.X + Util.rand.Next(-swayDistance, swayDistance), 
+                currentLoc.Y + Util.rand.Next(-swayDistance, swayDistance));
             SmoothMouseMove(newLoc, 10, 10); // sway to random spot
             SmoothMouseMove(currentLoc, 10, 10); // return to starting point
+        }
+
+        public static void Click(uint X = 0, uint Y = 0, bool leftClick = true)
+        {
+            //Click in current mouse location
+            if (X == 0 & Y == 0)
+            {
+                X = (uint)Cursor.Position.X;
+                Y = (uint)Cursor.Position.Y;
+                if (leftClick)
+                    mouse_event(0x02 | 0x04, X, Y, 0, 0);
+                else
+                    mouse_event(0x08 | 0x10, X, Y, 0, 0);
+            }
+            else //Move mouse and click at specified location
+            {
+                SmoothMouseMove(Convert.ToInt32(X), Convert.ToInt32(Y));
+                Util.RandomSleep(100, 600);
+                if (leftClick)
+                    mouse_event(0x02 | 0x04, X, Y, 0, 0);
+                else
+                    mouse_event(0x08 | 0x10, X, Y, 0, 0);
+                Util.RandomSleep(100, 600);
+            }
         }
     }
 }
