@@ -46,13 +46,13 @@ namespace WoWFishBot
         private static void bw_GetPeakVolume_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int peakVolume = e.ProgressPercentage;
-            Program.mainForm.CurrentVolumeBar(peakVolume);
+            Program.mainForm.UpdatePeakVolueControls(peakVolume);
         }
 
         private static void bw_GetPeakVolume_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             int peakVolume = (int)e.Result;
-            Program.mainForm.CurrentVolumeBar(peakVolume);
+            Program.mainForm.UpdatePeakVolueControls(peakVolume);
             Program.mainForm.UpdateStatusBar($"Peak volume captured: {peakVolume}%");
         }
 
