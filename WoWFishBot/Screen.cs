@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,10 @@ namespace WoWFishBot
 {
     class Screen
     {
+        //Used to get color
+        [System.Runtime.InteropServices.DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
+        public static extern int BitBlt(IntPtr hDC, int x, int y, int nWidth, int nHeight, IntPtr hSrcDC, int xSrc, int ySrc, int dwRop);
+
         private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
         private static float saturationFactor_MAYBE = 1;
         private static float brightnessFactor_MAYBE = 1;
@@ -50,11 +55,6 @@ namespace WoWFishBot
             }
 
             return screenCapture.GetPixel(0, 0);
-        }
-
-        private static int BitBlt(IntPtr hDC, int v1, int v2, int v3, int v4, IntPtr hSrcDC, int x, int y, int sourceCopy)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
