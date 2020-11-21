@@ -94,7 +94,7 @@ namespace WoWFishBot
         public static void CaptureBobberColor(int captureDelay = 0)
         {
             Util.Sleep(captureDelay);
-            searchColor = Bot.GetColorAtLocation();
+            searchColor = Screen.GetColorAtLocation();
             Program.mainForm.BobberColor.Text = $"{searchColor.R}, {searchColor.G}, {searchColor.B}";
             Logger.Log($"Bobber color captured: {searchColor}");
         }

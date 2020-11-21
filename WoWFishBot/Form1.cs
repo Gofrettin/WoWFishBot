@@ -77,7 +77,7 @@ namespace WoWFishBot
         private void Btn_CaptureLureSkill_Click(object sender, EventArgs e) => Config.CaptureLureSkill(3000);
         private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill(3000);
         private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor(3000);
-        private void Btn_UpdateScreenshot_Click(object sender, EventArgs e) => Bot.CaptureScreen();
+        private void Btn_UpdateScreenshot_Click(object sender, EventArgs e) => Screen.CaptureScreen();
 
         private void Btn_GetVolume_Click(object sender, EventArgs e)
         {
