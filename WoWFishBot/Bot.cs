@@ -88,8 +88,8 @@ namespace WoWFishBot
             GenerateCaptureRectangle();
 
             //Main Loop
-            while (true)
-            {
+            //while (true)
+            //{
                 if (ListenForSplash())
                 {
                     //RandomDelay(100, 2100); //Not required with RDP lag
@@ -107,7 +107,7 @@ namespace WoWFishBot
                 //UseFishSkill();
                 Util.Sleep(3000); //Allow time for bobber to show
                 //FindBobber(2);
-            }
+            //}
         }
 
         private static bool ListenForSplash(int timeout = 200, int updateRate = 100)
@@ -131,7 +131,7 @@ namespace WoWFishBot
                     }
                     else
                     {
-                        Logger.Log("Splash detected");
+                        Logger.Log($"Splash detected at {currentVolume}%");
                         return true;
                     }
                 }
@@ -139,7 +139,7 @@ namespace WoWFishBot
                 Mouse.RandomSway();
 
                 // Rate to check volume
-                Sleep(updateRate);
+                Util.Sleep(updateRate);
             }
 
             //Timeout Reached

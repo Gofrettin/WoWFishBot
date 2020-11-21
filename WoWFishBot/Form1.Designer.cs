@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Inp_TriggerVol = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Inp_SleepChance = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,35 +61,13 @@
             this.Lb_PickedVolume = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.Lb_CurrentVolume = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).BeginInit();
+            this.Btn_Run = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).BeginInit();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Inp_TriggerVol
-            // 
-            this.Inp_TriggerVol.DecimalPlaces = 1;
-            this.Inp_TriggerVol.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.Inp_TriggerVol.Location = new System.Drawing.Point(179, 12);
-            this.Inp_TriggerVol.Name = "Inp_TriggerVol";
-            this.Inp_TriggerVol.Size = new System.Drawing.Size(67, 20);
-            this.Inp_TriggerVol.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Trigger Volume %";
             // 
             // label2
             // 
@@ -154,7 +130,7 @@
             this.StatusLabel});
             this.StatusStrip.Location = new System.Drawing.Point(0, 584);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(781, 22);
+            this.StatusStrip.Size = new System.Drawing.Size(922, 22);
             this.StatusStrip.TabIndex = 8;
             this.StatusStrip.Text = "statusStrip1";
             // 
@@ -340,14 +316,14 @@
             this.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PictureBox.Location = new System.Drawing.Point(252, 14);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(507, 337);
+            this.PictureBox.Size = new System.Drawing.Size(658, 337);
             this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox.TabIndex = 40;
             this.PictureBox.TabStop = false;
             // 
             // Btn_UpdateScreenshot
             // 
-            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(730, 330);
+            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(881, 328);
             this.Btn_UpdateScreenshot.Name = "Btn_UpdateScreenshot";
             this.Btn_UpdateScreenshot.Size = new System.Drawing.Size(29, 23);
             this.Btn_UpdateScreenshot.TabIndex = 41;
@@ -401,11 +377,22 @@
             this.Lb_CurrentVolume.TabIndex = 46;
             this.Lb_CurrentVolume.Text = "0%";
             // 
+            // Btn_Run
+            // 
+            this.Btn_Run.Location = new System.Drawing.Point(850, 542);
+            this.Btn_Run.Name = "Btn_Run";
+            this.Btn_Run.Size = new System.Drawing.Size(60, 23);
+            this.Btn_Run.TabIndex = 47;
+            this.Btn_Run.Text = "Run";
+            this.Btn_Run.UseVisualStyleBackColor = true;
+            this.Btn_Run.Click += new System.EventHandler(this.Btn_Run_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 606);
+            this.ClientSize = new System.Drawing.Size(922, 606);
+            this.Controls.Add(this.Btn_Run);
             this.Controls.Add(this.Lb_CurrentVolume);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Lb_PickedVolume);
@@ -438,11 +425,8 @@
             this.Controls.Add(this.Inp_DelayMultiplier);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Inp_SleepChance);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Inp_TriggerVol);
             this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_DelayMultiplier)).EndInit();
             this.StatusStrip.ResumeLayout(false);
@@ -455,9 +439,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.NumericUpDown Inp_TriggerVol;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown Inp_SleepChance;
         private System.Windows.Forms.Label label3;
@@ -491,6 +472,7 @@
         private System.Windows.Forms.Label Lb_PickedVolume;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label Lb_CurrentVolume;
+        private System.Windows.Forms.Button Btn_Run;
     }
 }
 

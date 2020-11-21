@@ -45,7 +45,6 @@ namespace WoWFishBot
         private void btnSave_Click(object sender, EventArgs e)
         {
             Logger.Log("Updating settings");
-            Config.triggerVolumePercent = float.Parse(Inp_TriggerVol.Text);
             Config.sleepChancePercent = float.Parse(Inp_SleepChance.Text);
             Config.sleepMultiplier = float.Parse(Inp_DelayMultiplier.Text);
             Config.useLure = cb_UseLure.Checked;
@@ -88,6 +87,12 @@ namespace WoWFishBot
         private void VolumeBar_ValueChanged(object sender, EventArgs e)
         {
             Lb_PickedVolume.Text = VolumeBar.Value.ToString() + "%";
+            Config.triggerVolumePercent = VolumeBar.Value;
+        }
+
+        private void Btn_Run_Click(object sender, EventArgs e)
+        {
+            Bot.Run();
         }
     }
 }
