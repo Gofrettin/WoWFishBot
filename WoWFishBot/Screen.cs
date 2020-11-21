@@ -24,6 +24,12 @@ namespace WoWFishBot
             Logger.Log("Capturing new screenshot");
             Size searchRectangleSize = new Size(Config.bottomRightCords.X - Config.topLeftCords.X, Config.bottomRightCords.Y - Config.topLeftCords.Y);
 
+            if (searchRectangleSize.Width == 0 || searchRectangleSize.Height == 0)
+            {
+                Logger.Log("Failed to capture screenshot, TopLeftCords and/or BottomRightCords not set");
+                return null;
+            }
+
             Bitmap image = new Bitmap(searchRectangleSize.Width, searchRectangleSize.Height, PixelFormat.Format32bppArgb);
             Graphics screenShot = Graphics.FromImage(image);
             screenShot.CopyFromScreen(Config.topLeftCords.X, Config.topLeftCords.Y, 0, 0, searchRectangleSize, CopyPixelOperation.SourceCopy);

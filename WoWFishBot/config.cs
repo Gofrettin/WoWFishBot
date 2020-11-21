@@ -43,6 +43,7 @@ namespace WoWFishBot
             // BOTTOM RIGHT
             Util.Sleep(1000);
             CaptureBottomRight();
+            Screen.CaptureScreen();
             //Console.Beep();
 
             // LURE
@@ -65,6 +66,7 @@ namespace WoWFishBot
 
         public static void CaptureTopLeft(int captureDelay = 0)
         {
+            Program.mainForm.Inp_TopLeft.Text = "Capturing...";
             Util.Sleep(captureDelay);
             topLeftCords = Mouse.CurrentLocation();
             Program.mainForm.Inp_TopLeft.Text = topLeftCords.ToString();
@@ -72,6 +74,7 @@ namespace WoWFishBot
         }
         public static void CaptureBottomRight(int captureDelay = 0)
         {
+            Program.mainForm.Inp_BottomRight.Text = "Capturing...";
             Util.Sleep(captureDelay);
             bottomRightCords = Mouse.CurrentLocation();
             Program.mainForm.Inp_BottomRight.Text = bottomRightCords.ToString();
@@ -79,6 +82,7 @@ namespace WoWFishBot
         }
         public static void CaptureLureSkill(int captureDelay = 0)
         {
+            Program.mainForm.Inp_LureSkill.Text = "Capturing...";
             Util.Sleep(captureDelay);
             lureLocation = Mouse.CurrentLocation();
             Program.mainForm.Inp_LureSkill.Text = lureLocation.ToString();
@@ -86,6 +90,7 @@ namespace WoWFishBot
         }
         public static void CaptureFishSkill(int captureDelay = 0)
         {
+            Program.mainForm.Inp_FishSkill.Text = "Capturing...";
             Util.Sleep(captureDelay);
             skillLocation = Mouse.CurrentLocation();
             Program.mainForm.Inp_FishSkill.Text = skillLocation.ToString();
@@ -93,6 +98,7 @@ namespace WoWFishBot
         }
         public static void CaptureBobberColor(int captureDelay = 0)
         {
+            Program.mainForm.Inp_BobberColor.Text = "Capturing...";
             Util.Sleep(captureDelay);
             searchColor = Screen.GetColorAtLocation();
             Program.mainForm.Inp_BobberColor.Text = $"{searchColor.R}, {searchColor.G}, {searchColor.B}";
