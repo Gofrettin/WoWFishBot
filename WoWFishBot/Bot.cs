@@ -24,22 +24,23 @@ namespace WoWFishBot
 
 
         // GLOBALS
-        private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
-
-        private static float saturationFactor_MAYBE = 1;
-        private static float brightnessFactor_MAYBE = 1;
-        private static Size searchRectangleSize;
-        private static List<Color> foundColorList = new List<Color>();
-        private static List<Point> locationList = new List<Point>();
+     
 
         // Lure
         private static System.Timers.Timer lureTimer;
         private static bool lureBuffExpired = false;
 
         // Misc
+        private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
+        private static Size searchRectangleSize;
         public static int currentVolume { get; set; }
 
- 
+        private static float saturationFactor_MAYBE = 1;
+        private static float brightnessFactor_MAYBE = 1;
+        private static List<Color> foundColorList = new List<Color>();
+        private static List<Point> locationList = new List<Point>();
+
+
 
         /// <summary>
         /// Gets color at specified location
