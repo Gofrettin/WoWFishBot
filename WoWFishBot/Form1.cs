@@ -75,11 +75,11 @@ namespace WoWFishBot
 
         private void MainForm_Load(object sender, EventArgs e) => Config.ImportConfig();
         private void Btn_CaptureAll_Click(object sender, EventArgs e) => Config.CaptureAll();
-        private void Btn_CaptureTopLeft_Click(object sender, EventArgs e) => Config.CaptureTopLeft(3000);
-        private void Btn_CaptureBottomRight_Click(object sender, EventArgs e) => Config.CaptureBottomRight(3000);
-        private void Btn_CaptureLureSkill_Click(object sender, EventArgs e) => Config.CaptureLureSkill(3000);
-        private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill(3000);
-        private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor(3000);
+        private void Btn_CaptureTopLeft_Click(object sender, EventArgs e) => Config.CaptureTopLeft();
+        private void Btn_CaptureBottomRight_Click(object sender, EventArgs e) => Config.CaptureBottomRight();
+        private void Btn_CaptureLureSkill_Click(object sender, EventArgs e) => Config.CaptureLureSkill();
+        private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill();
+        private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor();
         private void Btn_UpdateScreenshot_Click(object sender, EventArgs e) => Screen.CaptureScreen();
         private void Btn_GetVolume_Click(object sender, EventArgs e) => Audio.GetPeakVolume();
         private void Inp_SleepChance_ValueChanged(object sender, EventArgs e) => Config.sleepChancePercent = Convert.ToSingle(Inp_SleepChance.Value);

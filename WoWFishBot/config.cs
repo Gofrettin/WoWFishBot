@@ -24,6 +24,8 @@ namespace WoWFishBot
         public static Point fishSkillCords { get; set; }
         public static Color bobberColor { get; set; }
 
+        private static int captureDelay = 3000;
+
         /// <summary>
         /// Captures all settings
         /// </summary>
@@ -36,35 +38,35 @@ namespace WoWFishBot
             Audio.GetPeakVolume();
 
             // TOP LEFT
-            Util.Sleep(1000);
+            Util.Sleep(captureDelay);
             CaptureTopLeft();
             //Console.Beep();
 
             // BOTTOM RIGHT
-            Util.Sleep(1000);
+            Util.Sleep(captureDelay);
             CaptureBottomRight();
             Screen.CaptureScreen();
             //Console.Beep();
 
             // LURE
-            Util.Sleep(1000);
+            Util.Sleep(captureDelay);
             CaptureLureSkill();
             //Console.Beep();
 
             // SKILL
-            Util.Sleep(1000);
+            Util.Sleep(captureDelay);
             CaptureFishSkill();
             //Console.Beep();
 
             // COLOR => TODO
-            Util.Sleep(1000);
+            Util.Sleep(captureDelay);
             CaptureBobberColor();
             //Console.Beep();
 
             Logger.Log("All captures complete");
         }
 
-        public static void CaptureTopLeft(int captureDelay = 0)
+        public static void CaptureTopLeft()
         {
             Program.mainForm.Inp_TopLeft.Text = "Capturing...";
             Util.Sleep(captureDelay);
@@ -72,7 +74,7 @@ namespace WoWFishBot
             Program.mainForm.Inp_TopLeft.Text = topLeftCords.ToString();
             Logger.Log($"Top left captured: {topLeftCords}");
         }
-        public static void CaptureBottomRight(int captureDelay = 0)
+        public static void CaptureBottomRight()
         {
             Program.mainForm.Inp_BottomRight.Text = "Capturing...";
             Util.Sleep(captureDelay);
@@ -80,7 +82,7 @@ namespace WoWFishBot
             Program.mainForm.Inp_BottomRight.Text = bottomRightCords.ToString();
             Logger.Log($"Bottom right captured: {bottomRightCords}");
         }
-        public static void CaptureLureSkill(int captureDelay = 0)
+        public static void CaptureLureSkill()
         {
             Program.mainForm.Inp_LureSkill.Text = "Capturing...";
             Util.Sleep(captureDelay);
@@ -88,7 +90,7 @@ namespace WoWFishBot
             Program.mainForm.Inp_LureSkill.Text = lureSkillCords.ToString();
             Logger.Log($"Lure skill captured: {lureSkillCords}");
         }
-        public static void CaptureFishSkill(int captureDelay = 0)
+        public static void CaptureFishSkill()
         {
             Program.mainForm.Inp_FishSkill.Text = "Capturing...";
             Util.Sleep(captureDelay);
@@ -96,7 +98,7 @@ namespace WoWFishBot
             Program.mainForm.Inp_FishSkill.Text = fishSkillCords.ToString();
             Logger.Log($"Fish skill captured: {fishSkillCords}");
         }
-        public static void CaptureBobberColor(int captureDelay = 0)
+        public static void CaptureBobberColor()
         {
             Program.mainForm.Inp_BobberColor.Text = "Capturing...";
             Util.Sleep(captureDelay);
@@ -116,9 +118,43 @@ namespace WoWFishBot
             Logger.Log("Cleared all capture inputs");
         }
 
-        public static void ValidateConfig()
+        public static bool ValidateConfig()
         {
+            bool error = false;
 
+            if (topLeftCords == null)
+            {
+                Logger.Log("topLeftCords null");
+                error = true;
+            }
+            if (bottomRightCords == null)
+            {
+                Logger.Log("bottomRightCords null");
+            }
+            if (lureSkillCords == null)
+            {
+                Logger.Log("lureSkillCords null");
+                error = true;
+            }
+            if (bobberColor == null)
+            {
+                Logger.Log("bobberColor null");
+                error = true;
+            }
+            if (triggerVolumePercent <= 0)
+            {
+                Logger.Log("triggerVolumePercent <= 0");
+                error = true;
+            }
+            if (sleepChancePercent < 0)
+            {
+                Logger.Log("triggerVolumePercent < 0");
+                error = true;
+            }
+
+            if (error) Logger.Log("Config Errors, please fix before running");
+
+            return error;
         }
 
         public static void SaveConfig()
