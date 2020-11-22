@@ -18,7 +18,6 @@ namespace WoWFishBot
         }
 
         // MODIFIERS
-  
         public void UpdateStatusBar(string status)
         {
             StatusLabel.Text = status;
@@ -27,7 +26,8 @@ namespace WoWFishBot
 
         public void UpdateLog(string message)
         {
-            tb_Log.AppendText(message + Environment.NewLine);
+            if (tb_Log.Text.Length <= 0) tb_Log.Text = message;
+            else tb_Log.AppendText(Environment.NewLine + message);
 
             // auto scroll
             tb_Log.SelectionStart = tb_Log.Text.Length;
@@ -53,13 +53,12 @@ namespace WoWFishBot
             Inp_BottomRight.Text = Config.bottomRightCords.ToString();
             Inp_LureSkill.Text = Config.lureSkillCords.ToString();
             Inp_FishSkill.Text = Config.fishSkillCords.ToString();
-            Inp_BobberColor.Text = Config.bobberColor.ToString();
+            Inp_BobberColor.Text = $"RGB: {Config.bobberColor.R},{Config.bobberColor.G},{Config.bobberColor.B}";
             Inp_TriggerVolume.Value = Convert.ToInt32(Config.triggerVolumePercent);
             Inp_SleepChance.Value = Convert.ToInt32(Config.sleepChancePercent);
         }
 
         // EVENTS
-
         private void VolumeBar_ValueChanged(object sender, EventArgs e)
         {
             Lb_PickedVolume.Text = Inp_TriggerVolume.Value.ToString() + "%";
@@ -74,6 +73,7 @@ namespace WoWFishBot
             UpdateStatusBar("Settings saved");
         }
 
+        private void MainForm_Load(object sender, EventArgs e) => Config.ImportConfig();
         private void Btn_CaptureAll_Click(object sender, EventArgs e) => Config.CaptureAll();
         private void Btn_CaptureTopLeft_Click(object sender, EventArgs e) => Config.CaptureTopLeft(3000);
         private void Btn_CaptureBottomRight_Click(object sender, EventArgs e) => Config.CaptureBottomRight(3000);

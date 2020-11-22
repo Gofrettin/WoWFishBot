@@ -101,7 +101,7 @@ namespace WoWFishBot
             Program.mainForm.Inp_BobberColor.Text = "Capturing...";
             Util.Sleep(captureDelay);
             bobberColor = Screen.GetColorAtLocation();
-            Program.mainForm.Inp_BobberColor.Text = $"{bobberColor.R}, {bobberColor.G}, {bobberColor.B}";
+            Program.mainForm.Inp_BobberColor.Text = $"RGB: {bobberColor.R},{bobberColor.G},{bobberColor.B}";
             Logger.Log($"Bobber color captured: {bobberColor}");
         }
 

@@ -12,21 +12,12 @@ namespace WoWFishBot
 {
     public static class Bot
     {
-
-
-
-        // GLOBALS
-     
-
         // Lure
         private static System.Timers.Timer lureTimer;
         private static bool lureBuffExpired = false;
 
         // Misc
         public static int currentVolume { get; set; }
-
-
-
 
         public static void Run()
         {

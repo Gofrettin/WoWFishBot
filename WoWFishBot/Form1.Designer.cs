@@ -70,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 254);
+            this.label2.Location = new System.Drawing.Point(10, 248);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 3;
@@ -84,7 +84,7 @@
             0,
             0,
             0});
-            this.Inp_SleepChance.Location = new System.Drawing.Point(150, 252);
+            this.Inp_SleepChance.Location = new System.Drawing.Point(151, 246);
             this.Inp_SleepChance.Name = "Inp_SleepChance";
             this.Inp_SleepChance.Size = new System.Drawing.Size(67, 20);
             this.Inp_SleepChance.TabIndex = 2;
@@ -94,9 +94,9 @@
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 525);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 489);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(910, 22);
+            this.StatusStrip.Size = new System.Drawing.Size(605, 22);
             this.StatusStrip.TabIndex = 8;
             this.StatusStrip.Text = "statusStrip1";
             // 
@@ -253,16 +253,17 @@
             // 
             // tb_Log
             // 
-            this.tb_Log.Location = new System.Drawing.Point(12, 312);
+            this.tb_Log.Enabled = false;
+            this.tb_Log.Location = new System.Drawing.Point(12, 301);
             this.tb_Log.Name = "tb_Log";
-            this.tb_Log.Size = new System.Drawing.Size(205, 174);
+            this.tb_Log.Size = new System.Drawing.Size(579, 150);
             this.tb_Log.TabIndex = 37;
             this.tb_Log.Text = "";
             this.tb_Log.WordWrap = false;
             // 
             // PeakVolumeBar
             // 
-            this.PeakVolumeBar.Location = new System.Drawing.Point(124, 173);
+            this.PeakVolumeBar.Location = new System.Drawing.Point(124, 171);
             this.PeakVolumeBar.MarqueeAnimationSpeed = 0;
             this.PeakVolumeBar.Name = "PeakVolumeBar";
             this.PeakVolumeBar.Size = new System.Drawing.Size(74, 21);
@@ -271,7 +272,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 177);
+            this.label5.Location = new System.Drawing.Point(9, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 39;
@@ -282,14 +283,14 @@
             this.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PictureBox.Location = new System.Drawing.Point(223, 12);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(674, 503);
+            this.PictureBox.Size = new System.Drawing.Size(368, 283);
             this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox.TabIndex = 40;
             this.PictureBox.TabStop = false;
             // 
             // Btn_UpdateScreenshot
             // 
-            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(868, 492);
+            this.Btn_UpdateScreenshot.Location = new System.Drawing.Point(562, 272);
             this.Btn_UpdateScreenshot.Name = "Btn_UpdateScreenshot";
             this.Btn_UpdateScreenshot.Size = new System.Drawing.Size(29, 23);
             this.Btn_UpdateScreenshot.TabIndex = 41;
@@ -299,7 +300,7 @@
             // 
             // Btn_GetVolume
             // 
-            this.Btn_GetVolume.Location = new System.Drawing.Point(200, 172);
+            this.Btn_GetVolume.Location = new System.Drawing.Point(200, 170);
             this.Btn_GetVolume.Name = "Btn_GetVolume";
             this.Btn_GetVolume.Size = new System.Drawing.Size(17, 23);
             this.Btn_GetVolume.TabIndex = 42;
@@ -309,7 +310,7 @@
             // 
             // Inp_TriggerVolume
             // 
-            this.Inp_TriggerVolume.Location = new System.Drawing.Point(83, 201);
+            this.Inp_TriggerVolume.Location = new System.Drawing.Point(84, 201);
             this.Inp_TriggerVolume.Maximum = 100;
             this.Inp_TriggerVolume.Name = "Inp_TriggerVolume";
             this.Inp_TriggerVolume.Size = new System.Drawing.Size(134, 45);
@@ -337,7 +338,7 @@
             // PeakVolumeLable
             // 
             this.PeakVolumeLable.AutoSize = true;
-            this.PeakVolumeLable.Location = new System.Drawing.Point(93, 177);
+            this.PeakVolumeLable.Location = new System.Drawing.Point(93, 175);
             this.PeakVolumeLable.Name = "PeakVolumeLable";
             this.PeakVolumeLable.Size = new System.Drawing.Size(21, 13);
             this.PeakVolumeLable.TabIndex = 46;
@@ -345,7 +346,7 @@
             // 
             // Btn_Run
             // 
-            this.Btn_Run.Location = new System.Drawing.Point(109, 492);
+            this.Btn_Run.Location = new System.Drawing.Point(483, 457);
             this.Btn_Run.Name = "Btn_Run";
             this.Btn_Run.Size = new System.Drawing.Size(108, 23);
             this.Btn_Run.TabIndex = 47;
@@ -355,7 +356,7 @@
             // 
             // Btn_SaveConfig
             // 
-            this.Btn_SaveConfig.Location = new System.Drawing.Point(109, 278);
+            this.Btn_SaveConfig.Location = new System.Drawing.Point(109, 272);
             this.Btn_SaveConfig.Name = "Btn_SaveConfig";
             this.Btn_SaveConfig.Size = new System.Drawing.Size(108, 23);
             this.Btn_SaveConfig.TabIndex = 48;
@@ -365,7 +366,7 @@
             // 
             // Btn_ImportConfig
             // 
-            this.Btn_ImportConfig.Location = new System.Drawing.Point(12, 278);
+            this.Btn_ImportConfig.Location = new System.Drawing.Point(12, 272);
             this.Btn_ImportConfig.Name = "Btn_ImportConfig";
             this.Btn_ImportConfig.Size = new System.Drawing.Size(91, 23);
             this.Btn_ImportConfig.TabIndex = 49;
@@ -377,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 547);
+            this.ClientSize = new System.Drawing.Size(605, 511);
             this.Controls.Add(this.Btn_ImportConfig);
             this.Controls.Add(this.Btn_SaveConfig);
             this.Controls.Add(this.Btn_Run);
@@ -410,8 +411,11 @@
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Inp_SleepChance);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "WoW FishBot";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).EndInit();
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
