@@ -61,6 +61,8 @@
             this.Btn_Run = new System.Windows.Forms.Button();
             this.Btn_SaveConfig = new System.Windows.Forms.Button();
             this.Btn_ImportConfig = new System.Windows.Forms.Button();
+            this.Btn_Stop = new System.Windows.Forms.Button();
+            this.Listbox_CurrentStep = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
@@ -94,7 +96,7 @@
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 489);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 581);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.Size = new System.Drawing.Size(605, 22);
             this.StatusStrip.TabIndex = 8;
@@ -256,7 +258,7 @@
             this.tb_Log.Enabled = false;
             this.tb_Log.Location = new System.Drawing.Point(12, 301);
             this.tb_Log.Name = "tb_Log";
-            this.tb_Log.Size = new System.Drawing.Size(579, 150);
+            this.tb_Log.Size = new System.Drawing.Size(462, 150);
             this.tb_Log.TabIndex = 37;
             this.tb_Log.Text = "";
             this.tb_Log.WordWrap = false;
@@ -374,11 +376,39 @@
             this.Btn_ImportConfig.UseVisualStyleBackColor = true;
             this.Btn_ImportConfig.Click += new System.EventHandler(this.Btn_ImportConfig_Click);
             // 
+            // Btn_Stop
+            // 
+            this.Btn_Stop.Location = new System.Drawing.Point(369, 457);
+            this.Btn_Stop.Name = "Btn_Stop";
+            this.Btn_Stop.Size = new System.Drawing.Size(108, 23);
+            this.Btn_Stop.TabIndex = 50;
+            this.Btn_Stop.Text = "Stop";
+            this.Btn_Stop.UseVisualStyleBackColor = true;
+            // 
+            // Listbox_CurrentStep
+            // 
+            this.Listbox_CurrentStep.Items.AddRange(new object[] {
+            "Applying lure",
+            "Using fish skill",
+            "Waiting for bobber",
+            "Finding bobber",
+            "Listening for splash",
+            "Catching fish",
+            "Random sleep",
+            "Paused"});
+            this.Listbox_CurrentStep.Location = new System.Drawing.Point(480, 301);
+            this.Listbox_CurrentStep.Name = "Listbox_CurrentStep";
+            this.Listbox_CurrentStep.Size = new System.Drawing.Size(111, 108);
+            this.Listbox_CurrentStep.TabIndex = 51;
+            this.Listbox_CurrentStep.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 511);
+            this.ClientSize = new System.Drawing.Size(605, 603);
+            this.Controls.Add(this.Listbox_CurrentStep);
+            this.Controls.Add(this.Btn_Stop);
             this.Controls.Add(this.Btn_ImportConfig);
             this.Controls.Add(this.Btn_SaveConfig);
             this.Controls.Add(this.Btn_Run);
@@ -460,6 +490,8 @@
         public System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.Button Btn_SaveConfig;
         private System.Windows.Forms.Button Btn_ImportConfig;
+        private System.Windows.Forms.Button Btn_Stop;
+        public System.Windows.Forms.ListBox Listbox_CurrentStep;
     }
 }
 

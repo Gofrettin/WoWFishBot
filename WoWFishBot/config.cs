@@ -38,28 +38,23 @@ namespace WoWFishBot
             Audio.GetPeakVolume();
 
             // TOP LEFT
-            Util.Sleep(captureDelay);
             CaptureTopLeft();
             //Console.Beep();
 
             // BOTTOM RIGHT
-            Util.Sleep(captureDelay);
             CaptureBottomRight();
             Screen.CaptureScreen();
             //Console.Beep();
 
             // LURE
-            Util.Sleep(captureDelay);
             CaptureLureSkill();
             //Console.Beep();
 
             // SKILL
-            Util.Sleep(captureDelay);
             CaptureFishSkill();
             //Console.Beep();
 
-            // COLOR => TODO
-            Util.Sleep(captureDelay);
+            // COLOR
             CaptureBobberColor();
             //Console.Beep();
 

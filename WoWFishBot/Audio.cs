@@ -16,8 +16,6 @@ namespace WoWFishBot
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(bw_GetCurrentVolume_DoWork);
             bw.WorkerReportsProgress = true;
-
-            Program.mainForm.UpdateStatusBar("Capturing peak volume...");
             bw.RunWorkerAsync();
         }
         private static void bw_GetCurrentVolume_DoWork(object sender, DoWorkEventArgs e)
@@ -33,8 +31,6 @@ namespace WoWFishBot
             bw.ProgressChanged += new ProgressChangedEventHandler(bw_GetPeakVolume_ProgressChanged);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_GetPeakVolume_RunWorkerCompleted);
             bw.WorkerReportsProgress = true;
-
-            Program.mainForm.UpdateStatusBar("Capturing peak volume...");
             bw.RunWorkerAsync();
         }
 

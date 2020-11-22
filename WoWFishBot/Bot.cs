@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace WoWFishBot
 {
     public static class Bot
-    {
+    { 
         // Lure
         private static System.Timers.Timer lureTimer;
         private static bool lureBuffExpired = false;
@@ -21,18 +21,9 @@ namespace WoWFishBot
 
         public static void Run()
         {
-            // init
-            //GenerateCaptureRectangle();
-
-            //Main Loop
             while (true)
             {
-                if (ListenForSplash())
-                {
-                    //RandomDelay(100, 2100); //Not required with RDP lag
-                    Mouse.Click(0, 0, false); // right click at current mouse loc
-                }
-                Util.RandomSleep();
+                Program.mainForm.UpdateStep(1);
 
                 // use Lure if needed
                 //if (useLure && lureBuffExpired)
@@ -41,9 +32,25 @@ namespace WoWFishBot
                 //    Util.RandomSleep(10000, 12500);
                 //}
 
+                Program.mainForm.UpdateStep();
                 UseFishSkill();
-                Util.Sleep(3000); //Allow time for bobber to show
+
+                Program.mainForm.UpdateStep();
+                Util.Sleep(3000); // wait for bobber
+
+                Program.mainForm.UpdateStep();
                 FindBobber(2);
+
+                Program.mainForm.UpdateStep();
+                if (ListenForSplash())
+                {
+                    // catch fish
+                    Program.mainForm.UpdateStep();
+                    Mouse.Click(0, 0, false);
+                }
+
+                Program.mainForm.UpdateStep();
+                Util.RandomSleep();
             }
         }
 
@@ -51,6 +58,7 @@ namespace WoWFishBot
         {
             Program.mainForm.UpdateStatusBar("Listening for spash...");
             Point location;
+
 
             for (int i = 0; i < timeout; i++)
             {

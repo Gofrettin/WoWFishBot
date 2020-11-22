@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCore.XAudio2;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,7 @@ namespace WoWFishBot
         {
             Logger.Log("Updating picture box");
             PictureBox.Image = picture;
+
         }
 
         public void UpdatePeakVolueControls(int percent)
@@ -56,6 +58,27 @@ namespace WoWFishBot
             Inp_BobberColor.Text = $"RGB: {Config.bobberColor.R},{Config.bobberColor.G},{Config.bobberColor.B}";
             Inp_TriggerVolume.Value = Convert.ToInt32(Config.triggerVolumePercent);
             Inp_SleepChance.Value = Convert.ToInt32(Config.sleepChancePercent);
+        }
+
+        /// <summary>
+        /// Sets the specified step (index 1 based)
+        /// </summary>
+        /// <param name="stepIndex"></param>
+        public void UpdateStep(int stepIndex)
+        {
+            Logger.Log("Updating current step", Logger.Level.Trace, false);
+            Listbox_CurrentStep.SelectedIndex = stepIndex - 1;
+        }
+
+        /// <summary>
+        /// Goes to the next step (or first if no more)
+        /// </summary>
+        public void UpdateStep()
+        {
+            if (Listbox_CurrentStep.SelectedIndex < Listbox_CurrentStep.Items.Count)
+                Listbox_CurrentStep.SelectedIndex++;
+            else
+                Listbox_CurrentStep.SelectedIndex = 0;
         }
 
         // EVENTS
