@@ -10,9 +10,16 @@ namespace WoWFishBot
     {
         static public void Log(string message, bool showInStatusBar = true)
         {
+            // show in status bar
+            if (showInStatusBar) Program.mainForm.UpdateStatusBar(message);
+
+            // add timestamp
+            DateTime now = DateTime.Now;
+            message = $"[{now.Hour}:{now.Minute}:{now.Millisecond}] {message}";
+
+            // write
             Console.WriteLine(message);
             Program.mainForm.UpdateLog(message);
-            if (showInStatusBar) Program.mainForm.UpdateStatusBar(message);
         }
 
     }

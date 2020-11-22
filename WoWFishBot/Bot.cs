@@ -25,8 +25,8 @@ namespace WoWFishBot
             //GenerateCaptureRectangle();
 
             //Main Loop
-            //while (true)
-            //{
+            while (true)
+            {
                 if (ListenForSplash())
                 {
                     //RandomDelay(100, 2100); //Not required with RDP lag
@@ -44,7 +44,7 @@ namespace WoWFishBot
                 UseFishSkill();
                 Util.Sleep(3000); //Allow time for bobber to show
                 FindBobber(2);
-            //}
+            }
         }
 
         private static bool ListenForSplash(int timeout = 200, int updateRate = 100)
