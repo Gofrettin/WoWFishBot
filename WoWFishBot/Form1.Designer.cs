@@ -54,15 +54,17 @@
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.Btn_UpdateScreenshot = new System.Windows.Forms.Button();
             this.Btn_GetVolume = new System.Windows.Forms.Button();
-            this.VolumeBar = new System.Windows.Forms.TrackBar();
+            this.Inp_TriggerVolume = new System.Windows.Forms.TrackBar();
             this.Lb_PickedVolume = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.PeakVolumeLable = new System.Windows.Forms.Label();
             this.Btn_Run = new System.Windows.Forms.Button();
+            this.Btn_SaveConfig = new System.Windows.Forms.Button();
+            this.Btn_ImportConfig = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).BeginInit();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -251,9 +253,9 @@
             // 
             // tb_Log
             // 
-            this.tb_Log.Location = new System.Drawing.Point(12, 278);
+            this.tb_Log.Location = new System.Drawing.Point(12, 312);
             this.tb_Log.Name = "tb_Log";
-            this.tb_Log.Size = new System.Drawing.Size(205, 208);
+            this.tb_Log.Size = new System.Drawing.Size(205, 174);
             this.tb_Log.TabIndex = 37;
             this.tb_Log.Text = "";
             this.tb_Log.WordWrap = false;
@@ -305,14 +307,14 @@
             this.Btn_GetVolume.UseVisualStyleBackColor = true;
             this.Btn_GetVolume.Click += new System.EventHandler(this.Btn_GetVolume_Click);
             // 
-            // VolumeBar
+            // Inp_TriggerVolume
             // 
-            this.VolumeBar.Location = new System.Drawing.Point(83, 201);
-            this.VolumeBar.Maximum = 100;
-            this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(134, 45);
-            this.VolumeBar.TabIndex = 43;
-            this.VolumeBar.ValueChanged += new System.EventHandler(this.VolumeBar_ValueChanged);
+            this.Inp_TriggerVolume.Location = new System.Drawing.Point(83, 201);
+            this.Inp_TriggerVolume.Maximum = 100;
+            this.Inp_TriggerVolume.Name = "Inp_TriggerVolume";
+            this.Inp_TriggerVolume.Size = new System.Drawing.Size(134, 45);
+            this.Inp_TriggerVolume.TabIndex = 43;
+            this.Inp_TriggerVolume.ValueChanged += new System.EventHandler(this.VolumeBar_ValueChanged);
             // 
             // Lb_PickedVolume
             // 
@@ -343,24 +345,46 @@
             // 
             // Btn_Run
             // 
-            this.Btn_Run.Location = new System.Drawing.Point(12, 492);
+            this.Btn_Run.Location = new System.Drawing.Point(109, 492);
             this.Btn_Run.Name = "Btn_Run";
-            this.Btn_Run.Size = new System.Drawing.Size(205, 23);
+            this.Btn_Run.Size = new System.Drawing.Size(108, 23);
             this.Btn_Run.TabIndex = 47;
             this.Btn_Run.Text = "Run";
             this.Btn_Run.UseVisualStyleBackColor = true;
             this.Btn_Run.Click += new System.EventHandler(this.Btn_Run_Click);
+            // 
+            // Btn_SaveConfig
+            // 
+            this.Btn_SaveConfig.Location = new System.Drawing.Point(109, 278);
+            this.Btn_SaveConfig.Name = "Btn_SaveConfig";
+            this.Btn_SaveConfig.Size = new System.Drawing.Size(108, 23);
+            this.Btn_SaveConfig.TabIndex = 48;
+            this.Btn_SaveConfig.Text = "Save";
+            this.Btn_SaveConfig.UseVisualStyleBackColor = true;
+            this.Btn_SaveConfig.Click += new System.EventHandler(this.Btn_SaveConfig_Click);
+            // 
+            // Btn_ImportConfig
+            // 
+            this.Btn_ImportConfig.Location = new System.Drawing.Point(12, 278);
+            this.Btn_ImportConfig.Name = "Btn_ImportConfig";
+            this.Btn_ImportConfig.Size = new System.Drawing.Size(91, 23);
+            this.Btn_ImportConfig.TabIndex = 49;
+            this.Btn_ImportConfig.Text = "Import";
+            this.Btn_ImportConfig.UseVisualStyleBackColor = true;
+            this.Btn_ImportConfig.Click += new System.EventHandler(this.Btn_ImportConfig_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 547);
+            this.Controls.Add(this.Btn_ImportConfig);
+            this.Controls.Add(this.Btn_SaveConfig);
             this.Controls.Add(this.Btn_Run);
             this.Controls.Add(this.PeakVolumeLable);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Lb_PickedVolume);
-            this.Controls.Add(this.VolumeBar);
+            this.Controls.Add(this.Inp_TriggerVolume);
             this.Controls.Add(this.Btn_GetVolume);
             this.Controls.Add(this.Btn_UpdateScreenshot);
             this.Controls.Add(this.PictureBox);
@@ -392,7 +416,7 @@
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Inp_TriggerVolume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,7 +443,7 @@
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button Btn_UpdateScreenshot;
         private System.Windows.Forms.Button Btn_GetVolume;
-        private System.Windows.Forms.TrackBar VolumeBar;
+        private System.Windows.Forms.TrackBar Inp_TriggerVolume;
         private System.Windows.Forms.Label Lb_PickedVolume;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label PeakVolumeLable;
@@ -430,6 +454,8 @@
         public System.Windows.Forms.TextBox Inp_LureSkill;
         public System.Windows.Forms.TextBox Inp_FishSkill;
         public System.Windows.Forms.ToolStripStatusLabel StatusLabel;
+        private System.Windows.Forms.Button Btn_SaveConfig;
+        private System.Windows.Forms.Button Btn_ImportConfig;
     }
 }
 

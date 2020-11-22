@@ -105,8 +105,8 @@ namespace WoWFishBot
             Logger.Log("Using fish skill");
             //TODO: Should this move smoothly here?
             Mouse.Click(
-                (uint)(Config.skillLocation.X + Util.rand.Next(-5, 5)), 
-                (uint)(Config.skillLocation.Y + Util.rand.Next(-5, 5)));
+                (uint)(Config.fishSkillCords.X + Util.rand.Next(-5, 5)), 
+                (uint)(Config.fishSkillCords.Y + Util.rand.Next(-5, 5)));
 
             Logger.Log("Moving mouse to random area within search area +/- 100 pixels x/y");
             Mouse.SmoothMouseMove(
@@ -145,13 +145,13 @@ namespace WoWFishBot
             switch (mode)
             {
                 case 1:
-                    closest = Screen.FindColor_Method1(foundColorList, Config.searchColor);
+                    closest = Screen.FindColor_Method1(foundColorList, Config.bobberColor);
                     break;
                 case 2:
-                    closest = Screen.FindColor_Method2(foundColorList, Config.searchColor);
+                    closest = Screen.FindColor_Method2(foundColorList, Config.bobberColor);
                     break;
                 case 3:
-                    closest = Screen.FindColor_Method3(foundColorList, Config.searchColor);
+                    closest = Screen.FindColor_Method3(foundColorList, Config.bobberColor);
                     break;
                 default:
                     break;
