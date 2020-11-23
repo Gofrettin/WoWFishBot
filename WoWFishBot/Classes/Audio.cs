@@ -11,16 +11,24 @@ namespace WoWFishBot
 {
     class Audio
     {
+        private static BackgroundWorker bw = new BackgroundWorker();
+
         /// <summary>
         /// Monitor audio level (non-stop)
         /// </summary>
         public static void MonitorCurrentVolume()
         {
-            BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(bw_MonitorCurrentVolume_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(bw_MonitorCurrentVolume_ProgressChanged);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_MonitorCurrentVolume_Completed);
             bw.WorkerReportsProgress = true;
+            bw.WorkerSupportsCancellation = true;
             bw.RunWorkerAsync();
+        }
+
+        public static void StopAudioMonitor()
+        {
+            bw.CancelAsync();
         }
 
         private static void bw_MonitorCurrentVolume_DoWork(object sender, DoWorkEventArgs e)
@@ -29,8 +37,15 @@ namespace WoWFishBot
 
             while(true) 
             {
-                worker.ReportProgress(GetCurrentMachineVolume());
-                Util.Sleep(Config.audioTickRate);
+                if (worker.CancellationPending)
+                {
+                    worker.ReportProgress(0);
+                    break;
+                } else
+                {
+                    worker.ReportProgress(GetCurrentMachineVolume());
+                    Util.Sleep(Config.audioTickRate);
+                }
             }
         }
 
@@ -38,6 +53,11 @@ namespace WoWFishBot
         {
             int currentVolume = e.ProgressPercentage;
             Program.mainForm.UpdateCurrentVolume(currentVolume);
+        }
+
+        private static void bw_MonitorCurrentVolume_Completed(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
         }
 
         //AUDIO RELATED
@@ -72,21 +92,6 @@ namespace WoWFishBot
                 }
             }
             return currentVolume;
-        }
-
-        private static int GetPeakVolumeOverTime(object sender, int seconds = 10)
-        {
-            List<int> volumeHistory = new List<int>();
-            BackgroundWorker worker = (BackgroundWorker)sender;
-
-            for (int i = 0; i < seconds*10; i++)
-            {
-                volumeHistory.Add(GetCurrentMachineVolume());
-                worker.ReportProgress(volumeHistory.Max());
-                Util.Sleep(100);
-            }
-
-            return volumeHistory.Max();
         }
     }
 }

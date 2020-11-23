@@ -378,21 +378,23 @@
             this.Btn_Stop.TabIndex = 50;
             this.Btn_Stop.Text = "Stop";
             this.Btn_Stop.UseVisualStyleBackColor = true;
+            this.Btn_Stop.Click += new System.EventHandler(this.Btn_Stop_Click);
             // 
             // Listbox_CurrentStep
             // 
             this.Listbox_CurrentStep.Items.AddRange(new object[] {
-            "Applying lure",
-            "Using fish skill",
-            "Waiting for bobber",
-            "Finding bobber",
-            "Listening for splash",
-            "Catching fish",
+            "1. Applying lure",
+            "2. Using fish skill",
+            "3. Waiting for bobber",
+            "4. Finding bobber",
+            "5. Listening for splash",
+            "6. Catching fish",
+            "-------------------------------",
             "Random sleep",
             "Paused"});
             this.Listbox_CurrentStep.Location = new System.Drawing.Point(224, 170);
             this.Listbox_CurrentStep.Name = "Listbox_CurrentStep";
-            this.Listbox_CurrentStep.Size = new System.Drawing.Size(111, 108);
+            this.Listbox_CurrentStep.Size = new System.Drawing.Size(111, 121);
             this.Listbox_CurrentStep.TabIndex = 51;
             this.Listbox_CurrentStep.TabStop = false;
             // 
@@ -458,6 +460,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "WoW FishBot";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Inp_SleepChance)).EndInit();
             this.StatusStrip.ResumeLayout(false);

@@ -9,7 +9,7 @@ namespace WoWFishBot
         static public void Log(string message, Level level, bool showInStatusBar)
         {
             // show in status bar
-            if (showInStatusBar) Program.mainForm.UpdateStatusBar(message);
+            //if (showInStatusBar) Program.mainForm.UpdateStatusBar(message);
 
             // add timestamp
             DateTime now = DateTime.Now;
@@ -17,7 +17,7 @@ namespace WoWFishBot
 
             // write
             Console.WriteLine(message);
-            Program.mainForm.UpdateLog(message);
+            //Program.mainForm.UpdateLog(message);
         }
 
         static public void Log(string message) => Log(message, Level.Trace, false);

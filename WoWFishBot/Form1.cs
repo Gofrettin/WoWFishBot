@@ -101,11 +101,19 @@ namespace WoWFishBot
             UpdateStatusBar("Settings saved");
         }
 
+        // Form load
         private void MainForm_Load(object sender, EventArgs e)
         {
             Config.ImportConfig();
             Audio.MonitorCurrentVolume();
         }
+
+        // Form close
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Audio.StopAudioMonitor();
+        }
+
         private void Btn_CaptureAll_Click(object sender, EventArgs e) => Config.CaptureAll();
         private void Btn_CaptureTopLeft_Click(object sender, EventArgs e) => Config.CaptureTopLeft();
         private void Btn_CaptureBottomRight_Click(object sender, EventArgs e) => Config.CaptureBottomRight();
@@ -118,5 +126,8 @@ namespace WoWFishBot
         private void Btn_SaveConfig_Click(object sender, EventArgs e) => Config.SaveConfig();
         private void Btn_ImportConfig_Click(object sender, EventArgs e) => Config.ImportConfig();
         private void Btn_Run_Click(object sender, EventArgs e) => Bot.Run();
+
+        private void Btn_Stop_Click(object sender, EventArgs e) => Audio.StopAudioMonitor();
+  
     }
 }

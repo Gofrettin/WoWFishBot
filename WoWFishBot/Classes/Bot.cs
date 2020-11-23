@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -11,19 +12,37 @@ using System.Windows.Forms;
 namespace WoWFishBot
 {
     public static class Bot
-    { 
-        // Lure
-        private static System.Timers.Timer lureTimer;
-        private static bool lureBuffExpired = false;
+    {
+        public static int currentVolume { get; set; } = 0;
 
-        // Misc
-        public static int currentVolume { get; set; }
 
         public static void Run()
         {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(bw_Run_DoWork);
+            bw.ProgressChanged += new ProgressChangedEventHandler(bw_Run_ProgressChanged);
+            bw.WorkerReportsProgress = true;
+            bw.RunWorkerAsync();
+        }
+
+        private static void bw_Run_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Program.mainForm.UpdateStep(e.ProgressPercentage);
+        }
+
+        //
+
+        private static void bw_Run_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = (BackgroundWorker)sender;
+
+            // Lure
+            //private static System.Timers.Timer lureTimer;
+            //private static bool lureBuffExpired = false;
+
             while (true)
             {
-                Program.mainForm.UpdateStep(1);
+                worker.ReportProgress(1);
 
                 // use Lure if needed
                 //if (useLure && lureBuffExpired)
@@ -32,31 +51,31 @@ namespace WoWFishBot
                 //    Util.RandomSleep(10000, 12500);
                 //}
 
-                Program.mainForm.UpdateStep();
+                worker.ReportProgress(2);
                 UseFishSkill();
 
-                Program.mainForm.UpdateStep();
-                Util.Sleep(Config.castWaitTime); // wait for bobber
+                worker.ReportProgress(3);
+                Util.Sleep(Config.castWaitTime);
 
-                Program.mainForm.UpdateStep();
+                worker.ReportProgress(4);
                 FindBobber();
 
-                Program.mainForm.UpdateStep();
+                worker.ReportProgress(5);
                 if (ListenForSplash())
                 {
                     // catch fish
-                    Program.mainForm.UpdateStep();
+                    worker.ReportProgress(6);
                     Mouse.Click(0, 0, false);
                 }
 
-                Program.mainForm.UpdateStep();
+                worker.ReportProgress(8);
                 Util.RandomSleep();
             }
         }
 
         private static bool ListenForSplash(int timeout = 200, int updateRate = 100)
         {
-            Program.mainForm.UpdateStatusBar("Listening for spash...");
+            Logger.Log("Listening for spash...");
             Point location;
 
             for (int i = 0; i < timeout; i++)
@@ -110,7 +129,7 @@ namespace WoWFishBot
                 Config.topLeftCords.Y + (((Config.bottomRightCords.Y - Config.topLeftCords.Y) / 2) + Util.rand.Next(-50, 50)));
         }
 
-        private static void FindBobber(int colorFindMode = 2)
+        private static void FindBobber(int colorFindMethod = 2)
         {
             Logger.Log("Looking for bobber");
 
@@ -138,7 +157,7 @@ namespace WoWFishBot
 
             Logger.Log("Looking for closest to configured bobber color");
             int closest = 0;
-            switch (colorFindMode)
+            switch (colorFindMethod)
             {
                 case 1:
                     closest = Screen.FindColor_Method1(foundColorList, Config.bobberColor);

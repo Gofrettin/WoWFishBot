@@ -12,7 +12,7 @@ namespace WoWFishBot
     class Screen
     {
         //Used to get color
-        [System.Runtime.InteropServices.DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         public static extern int BitBlt(IntPtr hDC, int x, int y, int nWidth, int nHeight, IntPtr hSrcDC, int xSrc, int ySrc, int dwRop);
 
         private static Bitmap screenCapture = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
@@ -33,8 +33,7 @@ namespace WoWFishBot
             Bitmap image = new Bitmap(searchRectangleSize.Width, searchRectangleSize.Height, PixelFormat.Format32bppArgb);
             Graphics screenShot = Graphics.FromImage(image);
             screenShot.CopyFromScreen(Config.topLeftCords.X, Config.topLeftCords.Y, 0, 0, searchRectangleSize, CopyPixelOperation.SourceCopy);
-            image.Save("test.bmp");
-            Program.mainForm.UpdatePictureBox(image);
+            Program.mainForm.UpdatePictureBox(new Bitmap(image));
 
             return image;
         }
