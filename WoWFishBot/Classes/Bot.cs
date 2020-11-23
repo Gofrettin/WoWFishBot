@@ -13,21 +13,34 @@ namespace WoWFishBot
 {
     public static class Bot
     {
+        private static BackgroundWorker bw = new BackgroundWorker();
         public static int currentVolume { get; set; } = 0;
-
 
         public static void Run()
         {
-            BackgroundWorker bw = new BackgroundWorker();
+            // todo => only allow one at a time, maybe make the init run on load, but runWorkerAsync only in this method so no dupes
+            bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(bw_Run_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(bw_Run_ProgressChanged);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_Run_Completed);
             bw.WorkerReportsProgress = true;
+            bw.WorkerSupportsCancellation = true;
             bw.RunWorkerAsync();
+        }
+
+        public static void Stop()
+        {
+            bw.CancelAsync();
         }
 
         private static void bw_Run_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Program.mainForm.UpdateStep(e.ProgressPercentage);
+        }
+
+        private static void bw_Run_Completed(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Program.mainForm.UpdateStep(9);
         }
 
         //
@@ -42,6 +55,7 @@ namespace WoWFishBot
 
             while (true)
             {
+                if (worker.CancellationPending) break;
                 worker.ReportProgress(1);
 
                 // use Lure if needed
@@ -51,23 +65,29 @@ namespace WoWFishBot
                 //    Util.RandomSleep(10000, 12500);
                 //}
 
+                if (worker.CancellationPending) break;
                 worker.ReportProgress(2);
                 UseFishSkill();
 
+                if (worker.CancellationPending) break;
                 worker.ReportProgress(3);
                 Util.Sleep(Config.castWaitTime);
 
+                if (worker.CancellationPending) break;
                 worker.ReportProgress(4);
                 FindBobber();
 
+                if (worker.CancellationPending) break;
                 worker.ReportProgress(5);
                 if (ListenForSplash())
                 {
                     // catch fish
+                    if (worker.CancellationPending) break;
                     worker.ReportProgress(6);
                     Mouse.Click(0, 0, false);
                 }
 
+                if (worker.CancellationPending) break;
                 worker.ReportProgress(8);
                 Util.RandomSleep();
             }

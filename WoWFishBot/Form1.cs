@@ -126,8 +126,7 @@ namespace WoWFishBot
         private void Btn_SaveConfig_Click(object sender, EventArgs e) => Config.SaveConfig();
         private void Btn_ImportConfig_Click(object sender, EventArgs e) => Config.ImportConfig();
         private void Btn_Run_Click(object sender, EventArgs e) => Bot.Run();
-
-        private void Btn_Stop_Click(object sender, EventArgs e) => Audio.StopAudioMonitor();
+        private void Btn_Stop_Click(object sender, EventArgs e) => Bot.Stop();
   
     }
 }
