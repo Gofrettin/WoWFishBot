@@ -42,10 +42,15 @@ namespace WoWFishBot
 
         }
 
-        public void UpdatePeakVolueControls(int percent)
+        public void UpdateCurrentVolume(int currentVolume)
         {
-            PeakVolumeBar.Value = percent;
-            PeakVolumeLable.Text = percent.ToString() + "%";
+            Bot.currentVolume = currentVolume;
+            CurrentVolumeBar.Value = currentVolume;
+            CurrentVolumeLabel.Text = $"{currentVolume}%";
+
+            // update if new peak
+            if (currentVolume > int.Parse(PeakVolumeLable.Text.Split('%')[0]))
+                PeakVolumeLable.Text = currentVolume.ToString() + "%";
         }
 
         public void UpdateAllValues()
@@ -96,7 +101,11 @@ namespace WoWFishBot
             UpdateStatusBar("Settings saved");
         }
 
-        private void MainForm_Load(object sender, EventArgs e) => Config.ImportConfig();
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Config.ImportConfig();
+            Audio.MonitorCurrentVolume();
+        }
         private void Btn_CaptureAll_Click(object sender, EventArgs e) => Config.CaptureAll();
         private void Btn_CaptureTopLeft_Click(object sender, EventArgs e) => Config.CaptureTopLeft();
         private void Btn_CaptureBottomRight_Click(object sender, EventArgs e) => Config.CaptureBottomRight();
@@ -104,7 +113,7 @@ namespace WoWFishBot
         private void Btn_CaptureFishSkill_Click(object sender, EventArgs e) => Config.CaptureFishSkill();
         private void Btn_CaptureBobberColor_Click(object sender, EventArgs e) => Config.CaptureBobberColor();
         private void Btn_UpdateScreenshot_Click(object sender, EventArgs e) => Screen.CaptureScreen();
-        private void Btn_GetVolume_Click(object sender, EventArgs e) => Audio.GetPeakVolume();
+        private void Btn_ResetPeakVolume_Click(object sender, EventArgs e) => PeakVolumeLable.Text = "0%";
         private void Inp_SleepChance_ValueChanged(object sender, EventArgs e) => Config.sleepChancePercent = Convert.ToSingle(Inp_SleepChance.Value);
         private void Btn_SaveConfig_Click(object sender, EventArgs e) => Config.SaveConfig();
         private void Btn_ImportConfig_Click(object sender, EventArgs e) => Config.ImportConfig();

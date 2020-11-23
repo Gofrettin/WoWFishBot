@@ -24,7 +24,9 @@ namespace WoWFishBot
         public static Point fishSkillCords { get; set; }
         public static Color bobberColor { get; set; }
 
+        // not in GUI
         private static int captureDelay = 3000;
+        public static int audioTickRate = 100;
 
         /// <summary>
         /// Captures all settings
@@ -35,7 +37,7 @@ namespace WoWFishBot
             ClearAllCaptureInputs();
 
             // START CAPTURE PEAK VOLUME
-            Audio.GetPeakVolume();
+            Audio.MonitorCurrentVolume();
 
             // TOP LEFT
             CaptureTopLeft();
@@ -104,7 +106,7 @@ namespace WoWFishBot
 
         public static void ClearAllCaptureInputs()
         {
-            Program.mainForm.UpdatePeakVolueControls(0);
+            Program.mainForm.PeakVolumeLable.Text = "0%";
             Program.mainForm.Inp_TopLeft.Text = string.Empty;
             Program.mainForm.Inp_BottomRight.Text = string.Empty;
             Program.mainForm.Inp_LureSkill.Text = string.Empty;

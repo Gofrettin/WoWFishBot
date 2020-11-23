@@ -11,45 +11,33 @@ namespace WoWFishBot
 {
     class Audio
     {
-        public static void GetCurrentVolume()
+        /// <summary>
+        /// Monitor audio level (non-stop)
+        /// </summary>
+        public static void MonitorCurrentVolume()
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(bw_GetCurrentVolume_DoWork);
-            bw.WorkerReportsProgress = true;
-            bw.RunWorkerAsync();
-        }
-        private static void bw_GetCurrentVolume_DoWork(object sender, DoWorkEventArgs e)
-        {
-            e.Result = GetCurrentMachineVolume();
-            Bot.currentVolume = (int)e.Result;
-        }
-
-        public static void GetPeakVolume()
-        {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(bw_GetPeakVolume_DoWork);
-            bw.ProgressChanged += new ProgressChangedEventHandler(bw_GetPeakVolume_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_GetPeakVolume_RunWorkerCompleted);
+            bw.DoWork += new DoWorkEventHandler(bw_MonitorCurrentVolume_DoWork);
+            bw.ProgressChanged += new ProgressChangedEventHandler(bw_MonitorCurrentVolume_ProgressChanged);
             bw.WorkerReportsProgress = true;
             bw.RunWorkerAsync();
         }
 
-        private static void bw_GetPeakVolume_DoWork(object sender, DoWorkEventArgs e)
+        private static void bw_MonitorCurrentVolume_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = GetPeakVolumeOverTime(sender);
+            BackgroundWorker worker = (BackgroundWorker)sender;
+
+            while(true) 
+            {
+                worker.ReportProgress(GetCurrentMachineVolume());
+                Util.Sleep(Config.audioTickRate);
+            }
         }
 
-        private static void bw_GetPeakVolume_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private static void bw_MonitorCurrentVolume_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            int peakVolume = e.ProgressPercentage;
-            Program.mainForm.UpdatePeakVolueControls(peakVolume);
-        }
-
-        private static void bw_GetPeakVolume_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            int peakVolume = (int)e.Result;
-            Program.mainForm.UpdatePeakVolueControls(peakVolume);
-            Program.mainForm.UpdateStatusBar($"Peak volume captured: {peakVolume}%");
+            int currentVolume = e.ProgressPercentage;
+            Program.mainForm.UpdateCurrentVolume(currentVolume);
         }
 
         //AUDIO RELATED

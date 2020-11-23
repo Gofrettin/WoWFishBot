@@ -59,11 +59,8 @@ namespace WoWFishBot
             Program.mainForm.UpdateStatusBar("Listening for spash...");
             Point location;
 
-
             for (int i = 0; i < timeout; i++)
             {
-                Audio.GetCurrentVolume();
-
                 if (currentVolume >= Config.triggerVolumePercent)
                 {
                     // Test for pause
