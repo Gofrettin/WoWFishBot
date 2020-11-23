@@ -39,7 +39,7 @@ namespace WoWFishBot
             ClearAllCaptureInputs();
 
             // START CAPTURE PEAK VOLUME
-            Audio.MonitorCurrentVolume();
+            Audio.StartAudioMonitor();
 
             // TOP LEFT
             CaptureTopLeft();

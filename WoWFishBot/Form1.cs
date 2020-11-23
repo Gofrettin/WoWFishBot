@@ -105,7 +105,7 @@ namespace WoWFishBot
         private void MainForm_Load(object sender, EventArgs e)
         {
             Config.ImportConfig();
-            Audio.MonitorCurrentVolume();
+            Audio.StartAudioMonitor();
         }
 
         // Form close

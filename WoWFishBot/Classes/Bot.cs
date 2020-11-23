@@ -13,23 +13,29 @@ namespace WoWFishBot
 {
     public static class Bot
     {
-        private static BackgroundWorker bw = new BackgroundWorker();
+        private static BackgroundWorker bw;
         public static int currentVolume { get; set; } = 0;
 
         public static void Run()
         {
-            // todo => only allow one at a time, maybe make the init run on load, but runWorkerAsync only in this method so no dupes
-            bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(bw_Run_DoWork);
-            bw.ProgressChanged += new ProgressChangedEventHandler(bw_Run_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_Run_Completed);
-            bw.WorkerReportsProgress = true;
-            bw.WorkerSupportsCancellation = true;
+            if (bw == null)
+            {
+                Logger.Log("Initilzing Bot thread");
+                bw = new BackgroundWorker();
+                bw.DoWork += new DoWorkEventHandler(bw_Run_DoWork);
+                bw.ProgressChanged += new ProgressChangedEventHandler(bw_Run_ProgressChanged);
+                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_Run_Completed);
+                bw.WorkerReportsProgress = true;
+                bw.WorkerSupportsCancellation = true;
+            }
+
+            Logger.Log("Starting bot");
             bw.RunWorkerAsync();
         }
 
         public static void Stop()
         {
+            Logger.Log("Requesting bot to stop");
             bw.CancelAsync();
         }
 
@@ -40,10 +46,9 @@ namespace WoWFishBot
 
         private static void bw_Run_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
+            Logger.Log("Bot stopped");
             Program.mainForm.UpdateStep(9);
         }
-
-        //
 
         private static void bw_Run_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -140,7 +145,7 @@ namespace WoWFishBot
             Logger.Log("Using fish skill");
             //TODO: Should this move smoothly here?
             Mouse.Click(
-                (uint)(Config.fishSkillCords.X + Util.rand.Next(-5, 5)), 
+                (uint)(Config.fishSkillCords.X + Util.rand.Next(-5, 5)),
                 (uint)(Config.fishSkillCords.Y + Util.rand.Next(-5, 5)));
 
             Logger.Log("Moving mouse to random area within search area +/- 100 pixels x/y");

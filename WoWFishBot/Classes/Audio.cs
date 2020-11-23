@@ -11,23 +11,31 @@ namespace WoWFishBot
 {
     class Audio
     {
-        private static BackgroundWorker bw = new BackgroundWorker();
+        private static BackgroundWorker bw;
 
         /// <summary>
-        /// Monitor audio level (non-stop)
+        /// Monitor audio level
         /// </summary>
-        public static void MonitorCurrentVolume()
+        public static void StartAudioMonitor()
         {
-            bw.DoWork += new DoWorkEventHandler(bw_MonitorCurrentVolume_DoWork);
-            bw.ProgressChanged += new ProgressChangedEventHandler(bw_MonitorCurrentVolume_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_MonitorCurrentVolume_Completed);
-            bw.WorkerReportsProgress = true;
-            bw.WorkerSupportsCancellation = true;
+            if (bw == null)
+            {
+                Logger.Log("Initilzing audio monitor thread");
+                bw = new BackgroundWorker();
+                bw.DoWork += new DoWorkEventHandler(bw_MonitorCurrentVolume_DoWork);
+                bw.ProgressChanged += new ProgressChangedEventHandler(bw_MonitorCurrentVolume_ProgressChanged);
+                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_MonitorCurrentVolume_Completed);
+                bw.WorkerReportsProgress = true;
+                bw.WorkerSupportsCancellation = true;
+            }
+
+            Logger.Log("Starting audio monitor");
             bw.RunWorkerAsync();
         }
 
         public static void StopAudioMonitor()
         {
+            Logger.Log("Stopping audio monitor");
             bw.CancelAsync();
         }
 
