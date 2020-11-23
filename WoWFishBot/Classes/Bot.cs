@@ -36,10 +36,10 @@ namespace WoWFishBot
                 UseFishSkill();
 
                 Program.mainForm.UpdateStep();
-                Util.Sleep(3000); // wait for bobber
+                Util.Sleep(Config.castWaitTime); // wait for bobber
 
                 Program.mainForm.UpdateStep();
-                FindBobber(2);
+                FindBobber();
 
                 Program.mainForm.UpdateStep();
                 if (ListenForSplash())
@@ -110,7 +110,7 @@ namespace WoWFishBot
                 Config.topLeftCords.Y + (((Config.bottomRightCords.Y - Config.topLeftCords.Y) / 2) + Util.rand.Next(-50, 50)));
         }
 
-        private static void FindBobber(int mode)
+        private static void FindBobber(int colorFindMode = 2)
         {
             Logger.Log("Looking for bobber");
 
@@ -138,7 +138,7 @@ namespace WoWFishBot
 
             Logger.Log("Looking for closest to configured bobber color");
             int closest = 0;
-            switch (mode)
+            switch (colorFindMode)
             {
                 case 1:
                     closest = Screen.FindColor_Method1(foundColorList, Config.bobberColor);

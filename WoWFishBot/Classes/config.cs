@@ -27,6 +27,8 @@ namespace WoWFishBot
         // not in GUI
         private static int captureDelay = 3000;
         public static int audioTickRate = 100;
+        public static int castWaitTime = 3000;
+
 
         /// <summary>
         /// Captures all settings
@@ -54,6 +56,9 @@ namespace WoWFishBot
 
             // SKILL
             CaptureFishSkill();
+            // cast and wait
+            Util.Sleep(castWaitTime);
+            Mouse.Click();
             //Console.Beep();
 
             // COLOR

@@ -402,12 +402,13 @@
             this.CurrentVolumeBar.MarqueeAnimationSpeed = 0;
             this.CurrentVolumeBar.Name = "CurrentVolumeBar";
             this.CurrentVolumeBar.Size = new System.Drawing.Size(561, 10);
+            this.CurrentVolumeBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.CurrentVolumeBar.TabIndex = 52;
             // 
             // CurrentVolumeLabel
             // 
             this.CurrentVolumeLabel.AutoSize = true;
-            this.CurrentVolumeLabel.Location = new System.Drawing.Point(567, 434);
+            this.CurrentVolumeLabel.Location = new System.Drawing.Point(572, 431);
             this.CurrentVolumeLabel.Name = "CurrentVolumeLabel";
             this.CurrentVolumeLabel.Size = new System.Drawing.Size(21, 13);
             this.CurrentVolumeLabel.TabIndex = 53;

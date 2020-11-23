@@ -8,6 +8,8 @@ namespace WoWFishBot
 {
     public class Steps
     {
+        // Not used at this time.
+
         public string UseFishSkill = "Use fish skill";
         public string FindBobber = "Find bobber";
         public string ListenForSplash = "Listen for splash";
