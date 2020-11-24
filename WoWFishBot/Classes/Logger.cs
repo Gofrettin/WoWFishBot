@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading;
 
 namespace WoWFishBot
 {
@@ -6,21 +8,14 @@ namespace WoWFishBot
     {
         public enum Level { Trace, Debug, Info, Warn, Error }
 
-        static public void Log(string message, Level level, bool showInStatusBar)
+        static public void Log(string message, Level level = Level.Trace)
         {
-            // show in status bar
-            //if (showInStatusBar) Program.mainForm.UpdateStatusBar(message);
-
-            // add timestamp
             DateTime now = DateTime.Now;
             message = $"[{now.Hour}:{now.Minute}:{now.Millisecond}] [{level}] {message}";
 
-            // write
             Console.WriteLine(message);
-            //Program.mainForm.UpdateLog(message);
+            using (StreamWriter writer = new StreamWriter("log.txt"))
+                writer.WriteLine(message);
         }
-
-        static public void Log(string message) => Log(message, Level.Trace, false);
-        static public void StatusBar(string message) => Log(message, Level.Trace, false);
     }
 }

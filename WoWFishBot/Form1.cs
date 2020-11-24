@@ -19,27 +19,10 @@ namespace WoWFishBot
         }
 
         // MODIFIERS
-        public void UpdateStatusBar(string status)
-        {
-            StatusLabel.Text = status;
-            StatusStrip.Update();
-        }
-
-        public void UpdateLog(string message)
-        {
-            if (tb_Log.Text.Length <= 0) tb_Log.Text = message;
-            else tb_Log.AppendText(Environment.NewLine + message);
-
-            // auto scroll
-            tb_Log.SelectionStart = tb_Log.Text.Length;
-            tb_Log.ScrollToCaret();
-        }
-
         public void UpdatePictureBox(Bitmap picture)
         {
             Logger.Log("Updating picture box");
             PictureBox.Image = picture;
-
         }
 
         public void UpdateCurrentVolume(int currentVolume)
@@ -71,7 +54,7 @@ namespace WoWFishBot
         /// <param name="stepIndex"></param>
         public void UpdateStep(int stepIndex)
         {
-            Logger.Log("Updating current step", Logger.Level.Trace, false);
+            Logger.Log("Updating current step");
             Listbox_CurrentStep.SelectedIndex = stepIndex - 1;
         }
 
@@ -97,8 +80,6 @@ namespace WoWFishBot
         {
             Logger.Log("Updating settings");
             Config.sleepChancePercent = float.Parse(Inp_SleepChance.Text);
-
-            UpdateStatusBar("Settings saved");
         }
 
         // Form load
@@ -127,6 +108,5 @@ namespace WoWFishBot
         private void Btn_ImportConfig_Click(object sender, EventArgs e) => Config.ImportConfig();
         private void Btn_Run_Click(object sender, EventArgs e) => Bot.Run();
         private void Btn_Stop_Click(object sender, EventArgs e) => Bot.Stop();
-  
     }
 }
