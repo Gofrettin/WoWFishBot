@@ -32,6 +32,7 @@ namespace WoWFishBot
             CurrentVolumeLabel.Text = $"{currentVolume}%";
 
             // update if new peak
+            if (PeakVolumeLable.Text == "") return; // cant update gui
             if (currentVolume > int.Parse(PeakVolumeLable.Text.Split('%')[0]))
                 PeakVolumeLable.Text = currentVolume.ToString() + "%";
         }
@@ -106,7 +107,17 @@ namespace WoWFishBot
         private void Inp_SleepChance_ValueChanged(object sender, EventArgs e) => Config.sleepChancePercent = Convert.ToSingle(Inp_SleepChance.Value);
         private void Btn_SaveConfig_Click(object sender, EventArgs e) => Config.SaveConfig();
         private void Btn_ImportConfig_Click(object sender, EventArgs e) => Config.ImportConfig();
-        private void Btn_Run_Click(object sender, EventArgs e) => Bot.Run();
-        private void Btn_Stop_Click(object sender, EventArgs e) => Bot.Stop();
+        private void Btn_Run_Click(object sender, EventArgs e)
+        {
+            Btn_Stop.Enabled = true;
+            Btn_Run.Enabled = false;
+            Bot.Run();
+        }
+        private void Btn_Stop_Click(object sender, EventArgs e) 
+        {
+            Btn_Stop.Enabled = false;
+            Btn_Run.Enabled = true;
+            Bot.Stop();
+        }
     }
 }

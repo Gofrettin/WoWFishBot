@@ -62,6 +62,7 @@
             this.CurrentVolumeLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Btn_Stop = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -352,7 +353,7 @@
             this.Btn_Run.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Run.Location = new System.Drawing.Point(6, 6);
             this.Btn_Run.Name = "Btn_Run";
-            this.Btn_Run.Size = new System.Drawing.Size(149, 23);
+            this.Btn_Run.Size = new System.Drawing.Size(94, 23);
             this.Btn_Run.TabIndex = 47;
             this.Btn_Run.Text = "Run";
             this.Btn_Run.UseVisualStyleBackColor = false;
@@ -439,6 +440,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage2.Controls.Add(this.Btn_Stop);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.Btn_UpdateScreenshot);
             this.tabPage2.Controls.Add(this.Listbox_CurrentStep);
@@ -456,6 +458,19 @@
             this.tabPage2.Size = new System.Drawing.Size(449, 240);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bot";
+            // 
+            // Btn_Stop
+            // 
+            this.Btn_Stop.BackColor = System.Drawing.SystemColors.Control;
+            this.Btn_Stop.Enabled = false;
+            this.Btn_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Stop.Location = new System.Drawing.Point(106, 6);
+            this.Btn_Stop.Name = "Btn_Stop";
+            this.Btn_Stop.Size = new System.Drawing.Size(49, 23);
+            this.Btn_Stop.TabIndex = 56;
+            this.Btn_Stop.Text = "Stop";
+            this.Btn_Stop.UseVisualStyleBackColor = false;
+            this.Btn_Stop.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Btn_Stop_Click);
             // 
             // label3
             // 
@@ -597,6 +612,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button Btn_Stop;
     }
 }
 
