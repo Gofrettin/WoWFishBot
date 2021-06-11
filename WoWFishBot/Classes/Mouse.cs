@@ -76,26 +76,29 @@ namespace WoWFishBot
             SmoothMouseMove(currentLoc, 10, 10); // return to starting point
         }
 
-        public static void Click(uint X = 0, uint Y = 0, bool leftClick = true)
+        public static void Click(int x = 0, int y = 0, bool leftClick = true)
         {
+            if (x < 0 || y < 0)
+                throw new Exception("Error: Cannot use negative numbers for click action (conversion to uint fails)");
+
             //Click in current mouse location
-            if (X == 0 & Y == 0)
+            if (x == 0 & y == 0)
             {
-                X = (uint)Cursor.Position.X;
-                Y = (uint)Cursor.Position.Y;
+                x = Cursor.Position.X;
+                y = Cursor.Position.Y;
                 if (leftClick)
-                    mouse_event(0x02 | 0x04, X, Y, 0, 0);
+                    mouse_event(0x02 | 0x04, Convert.ToUInt32(x), Convert.ToUInt32(y), 0, 0);
                 else
-                    mouse_event(0x08 | 0x10, X, Y, 0, 0);
+                    mouse_event(0x08 | 0x10, Convert.ToUInt32(x), Convert.ToUInt32(y), 0, 0);
             }
             else //Move mouse and click at specified location
             {
-                SmoothMouseMove(Convert.ToInt32(X), Convert.ToInt32(Y));
+                SmoothMouseMove(x, y);
                 Util.RandomSleep(100, 600);
                 if (leftClick)
-                    mouse_event(0x02 | 0x04, X, Y, 0, 0);
+                    mouse_event(0x02 | 0x04, Convert.ToUInt32(x), Convert.ToUInt32(y), 0, 0);
                 else
-                    mouse_event(0x08 | 0x10, X, Y, 0, 0);
+                    mouse_event(0x08 | 0x10, Convert.ToUInt32(x), Convert.ToUInt32(y), 0, 0);
                 Util.RandomSleep(100, 600);
             }
         }

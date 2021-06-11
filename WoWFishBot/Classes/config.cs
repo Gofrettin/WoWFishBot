@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -39,7 +40,7 @@ namespace WoWFishBot
             ClearAllCaptureInputs();
 
             // START CAPTURE PEAK VOLUME
-            Audio.StartAudioMonitor();
+            //Audio.StartAudioMonitor();
 
             // TOP LEFT
             CaptureTopLeft();
@@ -208,6 +209,8 @@ namespace WoWFishBot
 
         public static void ImportConfig()
         {
+            if (!File.Exists("config.xml")) return;
+
             Logger.Log("Importing config");
             using (XmlReader reader = XmlReader.Create("config.xml"))
             {
@@ -242,6 +245,7 @@ namespace WoWFishBot
                     }
                 }
             }
+
             Program.mainForm.UpdateAllValues();
         }
     }

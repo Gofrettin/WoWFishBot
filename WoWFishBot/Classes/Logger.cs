@@ -7,6 +7,7 @@ namespace WoWFishBot
     static public class Logger
     {
         public enum Level { Trace, Debug, Info, Warn, Error }
+        private static StreamWriter Writer = new StreamWriter("log.txt");
 
         static public void Log(string message, Level level = Level.Trace)
         {
@@ -14,8 +15,7 @@ namespace WoWFishBot
             message = $"[{now.Hour}:{now.Minute}:{now.Millisecond}] [{level}] {message}";
 
             Console.WriteLine(message);
-            using (StreamWriter writer = new StreamWriter("log.txt"))
-                writer.WriteLine(message);
+            Writer.WriteLine(message);
         }
     }
 }

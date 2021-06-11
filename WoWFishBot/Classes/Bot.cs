@@ -144,9 +144,12 @@ namespace WoWFishBot
         {
             Logger.Log("Using fish skill");
             //TODO: Should this move smoothly here?
+            int r = Util.rand.Next(-5, 5) + Config.fishSkillCords.X;
+            uint x = (uint) r;
+            //uint t = (uint) (Config.fishSkillCords.X + Util.rand.Next(-5, 5));
             Mouse.Click(
-                (uint)(Config.fishSkillCords.X + Util.rand.Next(-5, 5)),
-                (uint)(Config.fishSkillCords.Y + Util.rand.Next(-5, 5)));
+                Config.fishSkillCords.X + Util.rand.Next(-5, 5),
+                Config.fishSkillCords.Y + Util.rand.Next(-5, 5));
 
             Logger.Log("Moving mouse to random area within search area +/- 100 pixels x/y");
             Mouse.SmoothMouseMove(
