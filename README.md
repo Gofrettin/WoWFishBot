@@ -15,12 +15,13 @@ Do not use this, it will almost certainly get you banned (like me). This is not 
 Windows
 
 ## How to use
-1. Add settings:
+1. Clone and build
+2. Add settings:
    - Cast button: Location of cast button on action bars
    - lure button: Location of lure button on action bars (if enabled)
    - bobber color: After casting, mouse over a unique distinctive color on the bobber to capture the color to be used by the bot
    - Screen region: Define the top left and bottom right corner for the bot to search. The bot will calculate the rectangle from these two points to search within.
-2. Press start. Note, you cannot use you computer while it is running since it is actually using your mouse to run.
+3. Press start. Note, you cannot use you computer while it is running since it is actually using your mouse to run.
 
 ## How it works
 Once configured and started, it will run in this order:
